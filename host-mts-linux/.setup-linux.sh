@@ -11,13 +11,6 @@ echo "Installing and setting up rcm..."
 sudo apt-get install rcm -y
 rcup -vB mts-linux
 
-echo "Installing ZSH..."
-sudo apt-get install zsh -y
-chsh -s $(which zsh)
-
-echo "Installing oh-my-zsh..."
-git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-
 echo "Installing and setting up NeoVim..."
 sudo apt-get install software-properties-common -y
 sudo apt-get install neovim -y
