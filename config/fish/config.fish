@@ -3,10 +3,14 @@
 # set locale
 set -x LANG en_US.utf8
 
+#editar setup
 alias nv='nvim'
 
+# set cd alias
 alias cdvim='cd ~/.vim'
 alias cddot='cd ~/.dotfiles'
+alias bd='cd ..'
+
 #git aliases
 alias gd="git diff --color-words"
 alias gl="git log --graph --pretty=format:'%C(yellow)%s%Creset%n%an %C(blue)%cr%Creset %h%C(red)%d%Creset ' --numstat"
