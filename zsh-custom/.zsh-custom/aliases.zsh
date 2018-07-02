@@ -1,1 +1,0 @@
-/Users/b/.dotfiles/zsh-custom/aliases.zsh
