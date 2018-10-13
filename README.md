@@ -1,3 +1,4 @@
 # dotfiles
 
-crated by 
+special thanks.
+crated by flybayer.
