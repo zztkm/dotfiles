@@ -73,10 +73,10 @@ call minpac#init()
 " minpac must have {'type': 'opt'} so that it can be loaded with `packadd`.
 call minpac#add('k-takata/minpac', {'type': 'opt'})
 
-call minpac#add('EdenEast/nightfox.nvim')
-
 " color settings
-colorscheme carbonfox
+" call minpac#add('EdenEast/nightfox.nvim')
+call minpac#add('folke/tokyonight.nvim')
+colorscheme tokyonight-moon
 
 " いろんなやつが依存してる
 call minpac#add('nvim-lua/plenary.nvim')
@@ -98,6 +98,9 @@ call minpac#add('kevinhwang91/nvim-bqf')
 call minpac#add('nvim-lualine/lualine.nvim')
 call minpac#add('kyazdani42/nvim-web-devicons')
 call minpac#add('rcarriga/nvim-notify')
+
+" for lang
+call minpac#add('ollykel/v-vim')
 
 " util
 call minpac#add('bronson/vim-trailing-whitespace')
@@ -200,6 +203,8 @@ lua <<EOF
   require('lspconfig')['pyright'].setup {
     capabilities = capabilities
   }
-
+  require('lspconfig')['vls'].setup {
+    capabilities = capabilities
+  }
 EOF
 
