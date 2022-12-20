@@ -87,6 +87,12 @@ call minpac#add('nvim-telescope/telescope.nvim')
 call minpac#add('renerocksai/calendar-vim')
 call minpac#add('renerocksai/telekasten.nvim')
 call minpac#add('iamcco/markdown-preview.nvim', {'do': 'packloadall! | call mkdp#util#install()'})
+" telescope settings
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
 
 " tree viewer
 call minpac#add('lambdalisue/fern.vim')
@@ -98,6 +104,8 @@ call minpac#add('kevinhwang91/nvim-bqf')
 call minpac#add('nvim-lualine/lualine.nvim')
 call minpac#add('kyazdani42/nvim-web-devicons')
 call minpac#add('rcarriga/nvim-notify')
+
+call minpac#add('folke/todo-comments.nvim')
 
 " for lang
 call minpac#add('ollykel/v-vim')
@@ -121,6 +129,7 @@ call minpac#add('hrsh7th/cmp-vsnip')
 call minpac#add('hrsh7th/vim-vsnip')
 
 set completeopt=menu,menuone,noselect
+
 " lua settings
 lua <<EOF
   vim.notify = require("notify")
@@ -129,6 +138,9 @@ lua <<EOF
 
   -- Set lualine
   require('lualine').setup()
+
+  -- Set todo-comments
+  require("todo-comments").setup()
 
   -- Set up nvim-cmp.
   local cmp = require'cmp'
