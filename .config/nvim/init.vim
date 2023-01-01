@@ -10,6 +10,8 @@
 set mouse=a
 set clipboard=unnamed
 
+set termguicolors
+
 let g:clipboard = {
             \   'name': 'WslClipboard',
             \   'copy': {
@@ -22,8 +24,6 @@ let g:clipboard = {
             \   },
             \   'cache_enabled': 0,
             \ }
-
-set termguicolors
 
 "---------------------------------------------------------------------------
 " 検索の挙動に関する設定:
