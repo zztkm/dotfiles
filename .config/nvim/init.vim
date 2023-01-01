@@ -6,10 +6,24 @@
 
 " let mapleader = "\<Space>"
 
-set termguicolors
 
 set mouse=a
 set clipboard=unnamed
+
+let g:clipboard = {
+            \   'name': 'WslClipboard',
+            \   'copy': {
+            \      '+': 'clip.exe',
+            \      '*': 'clip.exe',
+            \    },
+            \   'paste': {
+            \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+            \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+            \   },
+            \   'cache_enabled': 0,
+            \ }
+
+set termguicolors
 
 "---------------------------------------------------------------------------
 " 検索の挙動に関する設定:
@@ -224,4 +238,3 @@ lua <<EOF
     capabilities = capabilities
   }
 EOF
-
