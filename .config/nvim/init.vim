@@ -4,6 +4,8 @@
 " 	if you use iTerm2
 " 	https://zenn.dev/hisasann/articles/e8e6b17bf9faab#iterm2%E3%81%AEnon-ascii-font%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B
 
+" let mapleader = "\<Space>"
+
 set termguicolors
 
 set mouse=a
@@ -86,7 +88,6 @@ call minpac#add('nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' })
 call minpac#add('nvim-telescope/telescope.nvim')
 call minpac#add('renerocksai/calendar-vim')
 call minpac#add('renerocksai/telekasten.nvim')
-call minpac#add('iamcco/markdown-preview.nvim', {'do': 'packloadall! | call mkdp#util#install()'})
 " telescope settings
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -110,9 +111,13 @@ call minpac#add('folke/todo-comments.nvim')
 " for lang
 call minpac#add('ollykel/v-vim')
 
+" doc generate
+call minpac#add('kkoomen/vim-doge', { 'do': 'packloadall! | call doge#install()'})
+
 " util
 call minpac#add('bronson/vim-trailing-whitespace')
 call minpac#add('tyru/open-browser.vim')
+call minpac#add('iamcco/markdown-preview.nvim', {'do': 'packloadall! | call mkdp#util#install()'})
 
 " lsp
 call minpac#add('williamboman/mason.nvim')
