@@ -3,27 +3,29 @@
 " 	https://github.com/ryanoasis/nerd-fonts#font-installation
 " 	if you use iTerm2
 " 	https://zenn.dev/hisasann/articles/e8e6b17bf9faab#iterm2%E3%81%AEnon-ascii-font%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B
-
+" silicon
+" 	https://github.com/segeljakt/vim-silicon
 " let mapleader = "\<Space>"
-
 
 set mouse=a
 set clipboard=unnamed
 
 set termguicolors
 
-let g:clipboard = {
-            \   'name': 'WslClipboard',
-            \   'copy': {
-            \      '+': 'clip.exe',
-            \      '*': 'clip.exe',
-            \    },
-            \   'paste': {
-            \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-            \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-            \   },
-            \   'cache_enabled': 0,
-            \ }
+if has("win64")
+	let g:clipboard = {
+	            \   'name': 'WslClipboard',
+	            \   'copy': {
+	            \      '+': 'clip.exe',
+	            \      '*': 'clip.exe',
+	            \    },
+	            \   'paste': {
+	            \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+	            \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+	            \   },
+	            \   'cache_enabled': 0,
+	            \ }
+endif
 
 "---------------------------------------------------------------------------
 " 検索の挙動に関する設定:
@@ -128,10 +130,15 @@ call minpac#add('ollykel/v-vim')
 " doc generate
 call minpac#add('kkoomen/vim-doge', { 'do': 'packloadall! | call doge#install()'})
 
+" git
+call minpac#add('TimUntersberger/neogit')
+call minpac#add('sindrets/diffview.nvim')
+
 " util
 call minpac#add('bronson/vim-trailing-whitespace')
 call minpac#add('tyru/open-browser.vim')
 call minpac#add('iamcco/markdown-preview.nvim', {'do': 'packloadall! | call mkdp#util#install()'})
+call minpac#add('segeljakt/vim-silicon')
 
 " lsp
 call minpac#add('williamboman/mason.nvim')
@@ -157,6 +164,9 @@ lua <<EOF
 
   -- Set lualine
   require('lualine').setup()
+
+  -- Set neogit
+  require("neogit").setup()
 
   -- Set todo-comments
   require("todo-comments").setup()
