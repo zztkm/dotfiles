@@ -150,6 +150,7 @@ call minpac#add('hrsh7th/cmp-nvim-lsp')
 call minpac#add('hrsh7th/cmp-buffer')
 call minpac#add('hrsh7th/cmp-path')
 call minpac#add('hrsh7th/cmp-cmdline')
+call minpac#add('hrsh7th/cmp-emoji')
 call minpac#add('hrsh7th/nvim-cmp')
 call minpac#add('hrsh7th/cmp-vsnip')
 call minpac#add('hrsh7th/vim-vsnip')
@@ -198,10 +199,11 @@ lua <<EOF
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'vsnip' }, -- For vsnip users.
+      { name = 'emoji' },
       -- { name = 'luasnip' }, -- For luasnip users.
       -- { name = 'ultisnips' }, -- For ultisnips users.
       -- { name = 'snippy' }, -- For snippy users.
-    }, {
+      }, {
       { name = 'buffer' },
     })
   })
