@@ -13,7 +13,7 @@ set clipboard=unnamed
 set termguicolors
 
 " WSL での動作する
-if system('uname -a | grep Microsoft') != ''
+if system('uname -a | grep microsoft') != ''
   augroup myYank
 	let g:clipboard = {
 	            \   'name': 'WslClipboard',
