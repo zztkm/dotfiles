@@ -12,7 +12,9 @@ set clipboard=unnamed
 
 set termguicolors
 
-if has("win64")
+" WSL での動作する
+if system('uname -a | grep Microsoft') != ''
+  augroup myYank
 	let g:clipboard = {
 	            \   'name': 'WslClipboard',
 	            \   'copy': {
