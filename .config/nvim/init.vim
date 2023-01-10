@@ -255,7 +255,7 @@ EOF
 
 " telekasten config
 lua << END
-local home = vim.fn.expand("~/note")
+local home = vim.fn.expand("~/minecraft")
 require('telekasten').setup({
     home = home,
 
