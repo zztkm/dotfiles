@@ -394,7 +394,7 @@ require('telekasten').setup({
             -- alternate configuration for vault2 here. Missing values are defaulted to
             -- default values from telekasten.
             -- e.g.
-            -- home = "/home/user/vaults/personal",
+            -- home = "~/vaults/personal",
         },
     },
 
