@@ -251,10 +251,8 @@ lua <<EOF
   require('lspconfig')['vls'].setup {
     capabilities = capabilities
   }
-EOF
 
-" telekasten config
-lua << END
+	-- telekasten config
 local home = vim.fn.expand("~/minecraft")
 require('telekasten').setup({
     home = home,
@@ -406,4 +404,5 @@ require('telekasten').setup({
     -- A customizable fallback handler for urls.
     follow_url_fallback = nil,
 })
-END
+EOF
+
