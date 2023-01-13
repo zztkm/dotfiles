@@ -106,12 +106,6 @@ call minpac#add('nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' })
 call minpac#add('nvim-telescope/telescope.nvim')
 call minpac#add('renerocksai/calendar-vim')
 call minpac#add('renerocksai/telekasten.nvim')
-" telescope settings
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
 
 " tree viewer
 call minpac#add('lambdalisue/fern.vim')
@@ -406,3 +400,13 @@ require('telekasten').setup({
 })
 EOF
 
+" key map
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+nnoremap <leader>zf :lua require('telekasten').find_notes()<CR>
+nnoremap <leader>zd :lua require('telekasten').find_daily_notes()<CR>
+nnoremap <leader>zg :lua require('telekasten').search_notes()<CR>
+nnoremap <leader>zz :lua require('telekasten').follow_link()<CR>
