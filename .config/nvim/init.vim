@@ -122,6 +122,7 @@ call minpac#add('folke/todo-comments.nvim')
 
 " for lang
 call minpac#add('ollykel/v-vim')
+call minpac#add('NoahTheDuke/vim-just')
 
 " doc generate
 call minpac#add('kkoomen/vim-doge', { 'do': 'packloadall! | call doge#install()'})
