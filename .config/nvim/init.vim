@@ -18,14 +18,14 @@ if has('wsl')
 	let g:clipboard = {
 	            \   'name': 'WslClipboard',
 	            \   'copy': {
-	            \      '+': 'clip.exe',
-	            \      '*': 'clip.exe',
+	            \      '+': 'win32yank.exe -i',
+	            \      '*': 'win32yank.exe -i',
 	            \    },
 	            \   'paste': {
-	            \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-	            \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+	            \      '+': 'win32yank.exe -o',
+	            \      '*': 'win32yank.exe -o',
 	            \   },
-	            \   'cache_enabled': 0,
+	            \   'cache_enabled': 1,
 	            \ }
 endif
 
@@ -106,12 +106,6 @@ call minpac#add('nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' })
 call minpac#add('nvim-telescope/telescope.nvim')
 call minpac#add('renerocksai/calendar-vim')
 call minpac#add('renerocksai/telekasten.nvim')
-" telescope settings
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
 
 " tree viewer
 call minpac#add('lambdalisue/fern.vim')
@@ -128,6 +122,7 @@ call minpac#add('folke/todo-comments.nvim')
 
 " for lang
 call minpac#add('ollykel/v-vim')
+call minpac#add('NoahTheDuke/vim-just')
 
 " doc generate
 call minpac#add('kkoomen/vim-doge', { 'do': 'packloadall! | call doge#install()'})
@@ -340,7 +335,7 @@ require('telekasten').setup({
     insert_after_inserting = true,
 
     -- tag notation: '#tag', ':tag:', 'yaml-bare'
-    tag_notation = "#tag",
+    tag_notation = "yaml-bare",
 
     -- command palette theme: dropdown (window) or ivy (bottom panel)
     command_palette_theme = "ivy",
@@ -406,3 +401,13 @@ require('telekasten').setup({
 })
 EOF
 
+" key map
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+nnoremap <leader>zf :lua require('telekasten').find_notes()<CR>
+nnoremap <leader>zd :lua require('telekasten').find_daily_notes()<CR>
+nnoremap <leader>zg :lua require('telekasten').search_notes()<CR>
+nnoremap <leader>zz :lua require('telekasten').follow_link()<CR>
