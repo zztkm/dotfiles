@@ -246,6 +246,9 @@ lua <<EOF
   require('lspconfig')['vls'].setup {
     capabilities = capabilities
   }
+  require('lspconfig')['tsserver'].setup {
+    capabilities = capabilities
+  }
 
 	-- telekasten config
 local home = vim.fn.expand("~/minecraft")
