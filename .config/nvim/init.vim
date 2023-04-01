@@ -152,6 +152,9 @@ call minpac#add('hrsh7th/nvim-cmp')
 call minpac#add('hrsh7th/cmp-vsnip')
 call minpac#add('hrsh7th/vim-vsnip')
 
+" GitHub Copilot
+call minpac#add('github/copilot.vim')
+
 set completeopt=menu,menuone,noselect
 
 " lua settings
