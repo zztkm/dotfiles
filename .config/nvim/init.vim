@@ -12,23 +12,6 @@ set clipboard=unnamed
 
 set termguicolors
 
-" WSL での動作する
-if has('wsl')
-  augroup myYank
-	let g:clipboard = {
-	            \   'name': 'WslClipboard',
-	            \   'copy': {
-	            \      '+': 'win32yank.exe -i',
-	            \      '*': 'win32yank.exe -i',
-	            \    },
-	            \   'paste': {
-	            \      '+': 'win32yank.exe -o',
-	            \      '*': 'win32yank.exe -o',
-	            \   },
-	            \   'cache_enabled': 1,
-	            \ }
-endif
-
 "---------------------------------------------------------------------------
 " 検索の挙動に関する設定:
 "
@@ -152,6 +135,9 @@ call minpac#add('hrsh7th/nvim-cmp')
 call minpac#add('hrsh7th/cmp-vsnip')
 call minpac#add('hrsh7th/vim-vsnip')
 
+" GitHub Copilot
+call minpac#add('github/copilot.vim')
+
 set completeopt=menu,menuone,noselect
 
 " lua settings
@@ -244,6 +230,9 @@ lua <<EOF
     capabilities = capabilities
   }
   require('lspconfig')['vls'].setup {
+    capabilities = capabilities
+  }
+  require('lspconfig')['tsserver'].setup {
     capabilities = capabilities
   }
 
@@ -445,3 +434,22 @@ nnoremap <leader>zf :lua require('telekasten').find_notes()<CR>
 nnoremap <leader>zd :lua require('telekasten').find_daily_notes()<CR>
 nnoremap <leader>zg :lua require('telekasten').search_notes()<CR>
 nnoremap <leader>zz :lua require('telekasten').follow_link()<CR>
+
+" WSL での動作する
+if has('wsl')
+  augroup myYank
+	let g:clipboard = {
+	            \   'name': 'WslClipboard',
+	            \   'copy': {
+	            \      '+': 'win32yank.exe -i',
+	            \      '*': 'win32yank.exe -i',
+	            \    },
+	            \   'paste': {
+	            \      '+': 'win32yank.exe -o',
+	            \      '*': 'win32yank.exe -o',
+	            \   },
+	            \   'cache_enabled': 1,
+	            \ }
+	let g:mkdp_browser='wsl-open'
+endif
+
