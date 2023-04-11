@@ -137,6 +137,7 @@ call minpac#add('hrsh7th/vim-vsnip')
 
 " GitHub Copilot
 call minpac#add('github/copilot.vim')
+let g:copilot_filetypes = {'markdown': v:true}
 
 set completeopt=menu,menuone,noselect
 
