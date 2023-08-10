@@ -279,6 +279,14 @@ require("mason-lspconfig").setup_handlers {
 	end,
 }
 
+-- バッファ保存時に goimports を実行する
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*.go',
+  callback = function()
+    vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
+  end
+})
+
 	-- telekasten config
 local home = vim.fn.expand("~/minecraft")
 require('telekasten').setup({
