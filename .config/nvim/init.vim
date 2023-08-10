@@ -139,7 +139,6 @@ call minpac#add('hrsh7th/vim-vsnip')
 call minpac#add('github/copilot.vim')
 let g:copilot_filetypes = {'markdown': v:true}
 
-call minpac#add('wakatime/vim-wakatime')
 
 set completeopt=menu,menuone,noselect
 
@@ -461,5 +460,7 @@ if has('wsl')
 	            \   'cache_enabled': 1,
 	            \ }
 	let g:mkdp_browser='wsl-open'
+
+  call minpac#add('wakatime/vim-wakatime')
 endif
 
