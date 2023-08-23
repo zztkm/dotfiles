@@ -84,6 +84,11 @@ colorscheme tokyonight-moon
 " いろんなやつが依存してる
 call minpac#add('nvim-lua/plenary.nvim')
 
+" for denops
+call minpac#add('vim-denops/denops.vim')
+"call minpac#add('kat0h/bufpreview.vim', {'do': 'silent! !deno task prepare'})
+call minpac#add('zztkm/bufpreview.vim', {'do': 'silent! !deno task prepare', 'branch': 'feat-mermaid'})
+
 " for telekasten.nvim
 call minpac#add('nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' })
 call minpac#add('nvim-telescope/telescope.nvim')
