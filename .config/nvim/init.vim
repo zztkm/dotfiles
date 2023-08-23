@@ -84,6 +84,11 @@ colorscheme tokyonight-moon
 " いろんなやつが依存してる
 call minpac#add('nvim-lua/plenary.nvim')
 
+" for denops
+call minpac#add('vim-denops/denops.vim')
+"call minpac#add('kat0h/bufpreview.vim', {'do': 'silent! !deno task prepare'})
+call minpac#add('zztkm/bufpreview.vim', {'do': 'silent! !deno task prepare', 'branch': 'feat-mermaid'})
+
 " for telekasten.nvim
 call minpac#add('nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' })
 call minpac#add('nvim-telescope/telescope.nvim')
@@ -113,6 +118,7 @@ call minpac#add('kkoomen/vim-doge', { 'do': 'packloadall! | call doge#install()'
 " git
 call minpac#add('TimUntersberger/neogit')
 call minpac#add('sindrets/diffview.nvim')
+call minpac#add('lewis6991/gitsigns.nvim')
 
 " util
 call minpac#add('bronson/vim-trailing-whitespace')
@@ -151,6 +157,9 @@ lua <<EOF
 
   -- Set neogit
   require("neogit").setup()
+
+  -- Set gitsigns
+  require("gitsigns").setup()
 
   -- Set todo-comments
   require("todo-comments").setup()
