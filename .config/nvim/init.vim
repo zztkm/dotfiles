@@ -118,6 +118,7 @@ call minpac#add('kkoomen/vim-doge', { 'do': 'packloadall! | call doge#install()'
 " git
 call minpac#add('TimUntersberger/neogit')
 call minpac#add('sindrets/diffview.nvim')
+call minpac#add('lewis6991/gitsigns.nvim')
 
 " util
 call minpac#add('bronson/vim-trailing-whitespace')
@@ -156,6 +157,9 @@ lua <<EOF
 
   -- Set neogit
   require("neogit").setup()
+
+  -- Set gitsigns
+  require("gitsigns").setup()
 
   -- Set todo-comments
   require("todo-comments").setup()
