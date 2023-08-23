@@ -235,6 +235,9 @@ lua <<EOF
   require('lspconfig')['tsserver'].setup {
     capabilities = capabilities
   }
+  require('lspconfig')['clangd'].setup {
+    capabilities = capabilities
+  }
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
