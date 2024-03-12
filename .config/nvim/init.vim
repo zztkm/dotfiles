@@ -146,6 +146,10 @@ call minpac#add('hrsh7th/vim-vsnip')
 
 " GitHub Copilot
 call minpac#add('github/copilot.vim')
+" copilot のプラグインを切り替えることを検討中
+" call minpac#add('zbirenbaum/copilot.lua')
+call minpac#add('nvim-lua/plenary.nvim')
+call minpac#add('CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' })
 let g:copilot_filetypes = {'markdown': v:true,'yaml': v:true}
 
 
@@ -154,6 +158,11 @@ set completeopt=menu,menuone,noselect
 " lua settings
 lua <<EOF
   vim.notify = require("notify")
+
+  -- Set todo-comments
+  require("CopilotChat").setup {
+	  debug = true,
+  }
 
   -- Set lualine
   require('lualine').setup()
