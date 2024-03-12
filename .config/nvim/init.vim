@@ -12,6 +12,9 @@ set clipboard=unnamed
 
 set termguicolors
 
+" font
+set guifont=Cica
+
 "---------------------------------------------------------------------------
 " 検索の挙動に関する設定:
 "
@@ -143,7 +146,7 @@ call minpac#add('hrsh7th/vim-vsnip')
 
 " GitHub Copilot
 call minpac#add('github/copilot.vim')
-let g:copilot_filetypes = {'markdown': v:true}
+let g:copilot_filetypes = {'markdown': v:true,'yaml': v:true}
 
 
 set completeopt=menu,menuone,noselect
@@ -242,6 +245,9 @@ lua <<EOF
     capabilities = capabilities
   }
   require('lspconfig')['tsserver'].setup {
+    capabilities = capabilities
+  }
+  require('lspconfig')['rust_analyzer'].setup {
     capabilities = capabilities
   }
 
