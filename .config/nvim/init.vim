@@ -249,9 +249,6 @@ lua <<EOF
   require('lspconfig')['pyright'].setup {
     capabilities = capabilities
   }
-  require('lspconfig')['vls'].setup {
-    capabilities = capabilities
-  }
   require('lspconfig')['tsserver'].setup {
     capabilities = capabilities
   }
