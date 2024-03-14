@@ -12,6 +12,9 @@ set clipboard=unnamed
 
 set termguicolors
 
+" font
+set guifont=Cica
+
 "---------------------------------------------------------------------------
 " 検索の挙動に関する設定:
 "
@@ -110,7 +113,6 @@ call minpac#add('folke/todo-comments.nvim')
 
 " for lang
 call minpac#add('ollykel/v-vim')
-call minpac#add('NoahTheDuke/vim-just')
 
 " doc generate
 call minpac#add('kkoomen/vim-doge', { 'do': 'packloadall! | call doge#install()'})
@@ -143,7 +145,11 @@ call minpac#add('hrsh7th/vim-vsnip')
 
 " GitHub Copilot
 call minpac#add('github/copilot.vim')
-let g:copilot_filetypes = {'markdown': v:true}
+" copilot のプラグインを切り替えることを検討中
+" call minpac#add('zbirenbaum/copilot.lua')
+call minpac#add('nvim-lua/plenary.nvim')
+call minpac#add('CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' })
+let g:copilot_filetypes = {'markdown': v:true,'yaml': v:true}
 
 
 set completeopt=menu,menuone,noselect
@@ -151,6 +157,11 @@ set completeopt=menu,menuone,noselect
 " lua settings
 lua <<EOF
   vim.notify = require("notify")
+
+  -- Set todo-comments
+  require("CopilotChat").setup {
+	  debug = true,
+  }
 
   -- Set lualine
   require('lualine').setup()
@@ -245,6 +256,12 @@ lua <<EOF
     capabilities = capabilities
   }
   require('lspconfig')['clangd'].setup {
+    capabilities = capabilities
+  }
+  require('lspconfig')['rust_analyzer'].setup {
+    capabilities = capabilities
+  }
+  require('lspconfig')['v_analyzer'].setup {
     capabilities = capabilities
   }
 
