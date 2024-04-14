@@ -4,7 +4,7 @@ setlocal
 for /f "usebackq delims=" %%A in (`cd`) do set PWD=%%A
 echo %PWD%
 
-set DIST=%PWD%\.config\nvim
+set DIST=%PWD%\nvim-windows
 set SRC=%LOCALAPPDATA%\nvim
 echo %SRC%
 echo %DIST%
