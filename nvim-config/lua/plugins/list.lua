@@ -58,6 +58,11 @@ local plugins = {
 			require("copilot").setup({
 				suggestion = { enabled = false },
   				panel = { enabled = false },
+				filetypes = {
+					gitcommit = true,
+					yaml = true,
+					markdown = true,
+				},
 			})
 		end,
 	},
