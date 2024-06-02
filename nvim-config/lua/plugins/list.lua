@@ -46,48 +46,33 @@ local plugins = {
 	{ "hrsh7th/cmp-emoji" },
 	{ "saadparwaiz1/cmp_luasnip" },
 	{
-		-- この plugin で利用する gopls は mason でインストールしない
-		"ray-x/go.nvim",
-		dependencies = {  -- optional packages
-		"ray-x/guihua.lua",
-		"neovim/nvim-lspconfig",
-		"nvim-treesitter/nvim-treesitter",
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({
+				suggestion = { enabled = false },
+				panel = { enabled = false },
+			})
+		end,
 	},
-	config = function()
-		require("go").setup()
-	end,
-	event = {"CmdlineEnter"},
-	ft = {"go", 'gomod'},
-	build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
-},
-{
-	"zbirenbaum/copilot.lua",
-	cmd = "Copilot",
-	event = "InsertEnter",
-	config = function()
-		require("copilot").setup({
-			suggestion = { enabled = false },
-			panel = { enabled = false },
-		})
-	end,
-},
-{
-	"zbirenbaum/copilot-cmp",
-	config = function ()
-		require("copilot_cmp").setup()
-	end
-},
-{
-	"CopilotC-Nvim/CopilotChat.nvim",
-	branch = "canary",
-	dependencies = {
-		{ "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-		{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+	{
+		"zbirenbaum/copilot-cmp",
+		config = function ()
+			require("copilot_cmp").setup()
+		end
 	},
-	opts = {
-		debug = true, -- Enable debugging
+	{
+		"CopilotC-Nvim/CopilotChat.nvim",
+		branch = "canary",
+		dependencies = {
+			{ "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+			{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+		},
+		opts = {
+			debug = true, -- Enable debugging
+		},
 	},
-},
 }
 
 return plugins

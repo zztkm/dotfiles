@@ -34,9 +34,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		set("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { buffer = true })
 		set("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { buffer = true })
 		set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", { buffer = true })
-		set("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", { buffer = true })
-		set("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", { buffer = true })
-		set("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", { buffer = true })
+		set("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.open_float()<CR>", { buffer = true })
 		set("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", { buffer = true })
 		set("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", { buffer = true })
 	end,
@@ -92,14 +90,6 @@ cmp.setup.filetype('gitcommit', {
 	})
 })
 
--- https://github.com/ray-x/go.nvim?tab=readme-ov-file#lsp-cmp-support
-require('go').setup({
-  -- other setups ....
-  lsp_cfg = {
-    capabilities = capabilities,
-    -- other setups
-  },
-})
 
 -- CopilotChat の設定
 local chat = require("CopilotChat")
