@@ -36,3 +36,24 @@ end
 nvim_lsp.mylsp.setup{
 	capabilities=capabilities,
 }
+
+-- Swift 向けの LSP を設定
+nvim_lsp.sourcekit.setup{
+	cmd = {
+		'sourcekit-lsp',
+		'-Xswiftc',
+		'-sdk',
+		'-Xswiftc',
+		-- '`xcrun --sdk iphonesimulator --show-sdk-path`',
+		'/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator17.5.sdk',
+		'-Xswiftc',
+		'-target',
+		'-Xswiftc',
+		-- 'x86_64-apple-ios`xcrun --sdk iphonesimulator --show-sdk-platform-version`-simulator',
+		'x86_64-apple-ios17.5-simulator',
+	},
+}
+
+-- for Biome
+nvim_lsp.biome.setup{}
+
