@@ -43,3 +43,6 @@ for i, option in ipairs(options) do
     end
 end
 
+-- fixeol しないようにする
+vim.opt.fixeol = false
+

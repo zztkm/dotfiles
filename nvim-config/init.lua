@@ -54,6 +54,12 @@ nvim_lsp.sourcekit.setup{
 	},
 }
 
+-- for typescript
+nvim_lsp.tsserver.setup {
+	filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+	cmd = { "typescript-language-server", "--stdio" }
+}
+
 -- for Biome
 nvim_lsp.biome.setup{}
 

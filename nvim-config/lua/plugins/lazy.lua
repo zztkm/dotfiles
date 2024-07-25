@@ -21,6 +21,7 @@ require("lazy").setup(plugins)
 -- LSPサーバアタッチ時の処理
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ctx)
+		-- note: open_float は <C-W>d がデフォルトでマッピングされているのでそれを使う
 		local set = vim.keymap.set
 		set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { buffer = true })
 		set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { buffer = true })
@@ -34,7 +35,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		set("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { buffer = true })
 		set("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { buffer = true })
 		set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", { buffer = true })
-		set("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.open_float()<CR>", { buffer = true })
 		set("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", { buffer = true })
 		set("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", { buffer = true })
 	end,
@@ -42,7 +42,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- プラグインの設定
 require("mason").setup()
-require("mason-lspconfig").setup()
+require("mason-lspconfig").setup {
+	ensure_installed = { "tailwindcss" },
+}
 require("mason-lspconfig").setup_handlers {
 	function(server_name)
 		require("lspconfig")[server_name].setup {}
