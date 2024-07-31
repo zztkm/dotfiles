@@ -63,3 +63,10 @@ nvim_lsp.tsserver.setup {
 -- for Biome
 nvim_lsp.biome.setup{}
 
+-- for typos
+nvim_lsp.typos_lsp.setup({
+	init_options = {
+		config = "~/.config/nvim/.typos.toml",
+	}
+})
+

@@ -73,6 +73,9 @@ local plugins = {
 			debug = true, -- Enable debugging
 		},
 	},
+	{
+		"APZelos/blamer.nvim"
+	},
 }
 
 return plugins
