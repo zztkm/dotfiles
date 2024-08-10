@@ -15,3 +15,7 @@ end
 
 -- pecoli へのキーバインドを設定
 nyagos.bindkey("C-]", function(this) pecoli() end)
+
+
+-- alias 設定
+nyagos.alias["cp"] = "copy"
