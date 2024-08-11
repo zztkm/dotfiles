@@ -19,3 +19,4 @@ nyagos.bindkey("C-]", function(this) pecoli() end)
 
 -- alias 設定
 nyagos.alias["cp"] = "copy"
+nyagos.alias["gs"] = "git status"
