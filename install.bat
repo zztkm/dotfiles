@@ -16,3 +16,5 @@ mklink %NYAGOS_CONFIG_SRC% %NYAGOS_CONFIG_DIST%
 
 mklink %USERPROFILE%\.ideavimrc %PWD%\ideavim\.ideavimrc
 
+mklink "C:\Users\takum\AppData\Local\SuperCollider\startup.scd" %PWD%\supercollider\startup.scd
+

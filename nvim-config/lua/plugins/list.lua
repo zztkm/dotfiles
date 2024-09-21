@@ -51,8 +51,13 @@ local plugins = {
 		event = "InsertEnter",
 		config = function()
 			require("copilot").setup({
+				-- nvim-cmp との連携のために false にしてある
 				suggestion = { enabled = false },
 				panel = { enabled = false },
+				filetype = {
+					gitcommit = true,
+					supercollider = true,
+				},
 			})
 		end,
 	},
@@ -75,6 +80,9 @@ local plugins = {
 	},
 	{
 		"APZelos/blamer.nvim"
+	},
+	{
+		"davidgranstrom/scnvim",
 	},
 }
 
