@@ -21,22 +21,9 @@ local plugins = {
 		'nvim-telescope/telescope.nvim',
 		dependencies = { 'nvim-lua/plenary.nvim' }
 	},
-	{ "lambdalisue/fern.vim" },
 	{
 		'nvim-lualine/lualine.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' }
-	},
-	{},
-	{
-		"NeogitOrg/neogit",
-		dependencies = {
-			"nvim-lua/plenary.nvim",         -- required
-			"sindrets/diffview.nvim",        -- optional - Diff integration
-			-- Only one of these is needed, not both.
-			"nvim-telescope/telescope.nvim", -- optional
-			"ibhagwan/fzf-lua",              -- optional
-		},
-		config = true
 	},
 	{ "bronson/vim-trailing-whitespace" },
 	{ "L3MON4D3/LuaSnip" },
