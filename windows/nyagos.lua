@@ -43,7 +43,7 @@ nyagos.prompt = function(this)
     return share.org_prompter('$e[36;40;1m'..prompt_message..'$e[37;1m')
 end
 
--- git commnad hook
+-- git command hook
 nyagos.complete_for.git = function(args)
     while #args > 2 and args[2]:sub(1,1) == "-" do
         table.remove(args,2)
@@ -111,3 +111,7 @@ nyagos.complete_for.git = function(args)
     end
     return nil
 end
+
+-- gpg-agent を起動する
+nyagos.rawexec{"gpgconf", "--launch", "gpg-agent"}
+
