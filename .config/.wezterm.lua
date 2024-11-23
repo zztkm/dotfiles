@@ -1,10 +1,8 @@
-local wezterm = require('wezterm')
-
 -- This table will hold the configuration.
 local config = wezterm.config_builder()
 
-config.color_scheme = 'GitHub Dark'
---config.color_scheme = 'Catppuccin Macchiato'
+--config.color_scheme = 'GitHub Dark'
+config.color_scheme = 'Catppuccin Macchiato'
 
 config.font = wezterm.font('Cica', { weight = 'Regular' })
 config.font_size = 15
