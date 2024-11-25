@@ -37,32 +37,6 @@ nvim_lsp.mylsp.setup{
 	capabilities=capabilities,
 }
 
--- Swift 向けの LSP を設定
-nvim_lsp.sourcekit.setup{
-	cmd = {
-		'sourcekit-lsp',
-		'-Xswiftc',
-		'-sdk',
-		'-Xswiftc',
-		-- '`xcrun --sdk iphonesimulator --show-sdk-path`',
-		'/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator17.5.sdk',
-		'-Xswiftc',
-		'-target',
-		'-Xswiftc',
-		-- 'x86_64-apple-ios`xcrun --sdk iphonesimulator --show-sdk-platform-version`-simulator',
-		'x86_64-apple-ios17.5-simulator',
-	},
-}
-
--- for typescript
-nvim_lsp.tsserver.setup {
-	filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-	cmd = { "typescript-language-server", "--stdio" }
-}
-
--- for Biome
-nvim_lsp.biome.setup{}
-
 -- for typos
 nvim_lsp.typos_lsp.setup({
 	init_options = {
