@@ -1,0 +1,10 @@
+theme = catppuccin-macchiato
+
+# キーバインド
+# https://ghostty.org/docs/config/keybind/reference#close_surface
+keybind = ctrl+w=close_surface
+
+# font
+# https://ghostty.org/docs/config/reference#font-family
+font-family = "Cica"
+font-size = 12
