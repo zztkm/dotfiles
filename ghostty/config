@@ -7,4 +7,5 @@ keybind = ctrl+w=close_surface
 # font
 # https://ghostty.org/docs/config/reference#font-family
 font-family = "Cica"
-font-size = 14
+font-size = 16
+

@@ -44,3 +44,19 @@ nvim_lsp.typos_lsp.setup({
 	}
 })
 
+-- for Swift
+-- 参考: https://findy-code.io/engineer-lab/oshi-editor-the-uhooi
+nvim_lsp.sourcekit.setup{
+	cmd = {
+		"sourcekit-lsp",
+		"-Xswiftc",
+		"-sdk",
+		"-Xswiftc",
+		"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.2.sdk",
+		"-Xswiftc",
+		"-target",
+		"-Xswiftc",
+		"aarch64-apple-ios18.2-simulator",
+	}
+}
+
