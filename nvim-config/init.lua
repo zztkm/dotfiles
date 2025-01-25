@@ -60,3 +60,6 @@ nvim_lsp.sourcekit.setup{
 	}
 }
 
+-- for zls
+-- zig と zls を PATH に追加しているので特に設定は不要
+nvim_lsp.zls.setup {}

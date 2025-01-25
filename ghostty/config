@@ -2,10 +2,15 @@ theme = catppuccin-macchiato
 
 # キーバインド
 # https://ghostty.org/docs/config/keybind/reference#close_surface
-keybind = ctrl+w=close_surface
+# neovim で ctrl w を使うのでコメントアウト
+# keybind = ctrl+w=close_surface
 
 # font
 # https://ghostty.org/docs/config/reference#font-family
 font-family = "Cica"
-font-size = 16
+font-size = 14
+
+# カーソル
+cursor-style = block
+shell-integration-features = no-cursor
 
