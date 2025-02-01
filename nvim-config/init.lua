@@ -54,6 +54,8 @@ nvim_lsp.sourcekit.setup{
 		"-Xswiftc",
 		"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.2.sdk",
 		"-Xswiftc",
+		"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk",
+		"-Xswiftc",
 		"-target",
 		"-Xswiftc",
 		"aarch64-apple-ios18.2-simulator",
