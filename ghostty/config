@@ -8,7 +8,7 @@ theme = catppuccin-macchiato
 # font
 # https://ghostty.org/docs/config/reference#font-family
 font-family = "Cica"
-font-size = 14
+font-size = 16
 
 # カーソル
 cursor-style = block
