@@ -44,6 +44,7 @@ local plugins = {
 				filetype = {
 					gitcommit = true,
 					supercollider = true,
+					markdown = true,
 				},
 			})
 		end,

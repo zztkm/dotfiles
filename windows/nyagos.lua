@@ -14,7 +14,7 @@ function pecoli()
 end
 
 -- pecoli へのキーバインドを設定
-nyagos.bindkey("C-]", function(this) pecoli() end)
+nyagos.bindkey("C-]", function(this) pecoli(); this:call("REPAINT_ON_NEWLINE"); end)
 
 
 -- alias 設定
@@ -113,5 +113,5 @@ nyagos.complete_for.git = function(args)
 end
 
 -- gpg-agent を起動する
-nyagos.rawexec{"gpgconf", "--launch", "gpg-agent"}
+-- nyagos.rawexec{"gpgconf", "--launch", "gpg-agent"}
 
