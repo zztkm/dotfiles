@@ -43,6 +43,11 @@ nyagos.prompt = function(this)
     return share.org_prompter('$e[36;40;1m'..prompt_message..'$e[37;1m')
 end
 
+-- nyagos.prompt = function(this)
+-- 	local prompt = nyagos.eval('zprompt')
+-- 	return nyagos.default_prompt('$e[40;36;1m'..this..'$e[37;1m', prompt)
+-- end
+
 -- git command hook
 nyagos.complete_for.git = function(args)
     while #args > 2 and args[2]:sub(1,1) == "-" do
