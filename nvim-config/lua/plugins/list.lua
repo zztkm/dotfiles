@@ -32,39 +32,39 @@ local plugins = {
 	{ "hrsh7th/cmp-buffer" },
 	{ "hrsh7th/cmp-emoji" },
 	{ "saadparwaiz1/cmp_luasnip" },
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = function()
-			require("copilot").setup({
-				-- nvim-cmp との連携のために false にしてある
-				suggestion = { enabled = false },
-				panel = { enabled = false },
-				filetype = {
-					gitcommit = true,
-					supercollider = true,
-					markdown = true,
-				},
-			})
-		end,
-	},
-	{
-		"zbirenbaum/copilot-cmp",
-		config = function ()
-			require("copilot_cmp").setup()
-		end
-	},
-	{
-		"CopilotC-Nvim/CopilotChat.nvim",
-		dependencies = {
-			{ "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-			{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-		},
-		opts = {
-			debug = true, -- Enable debugging
-		},
-	},
+	--{
+	--	"zbirenbaum/copilot.lua",
+	--	cmd = "Copilot",
+	--	event = "InsertEnter",
+	--	config = function()
+	--		require("copilot").setup({
+	--			-- nvim-cmp との連携のために false にしてある
+	--			suggestion = { enabled = false },
+	--			panel = { enabled = false },
+	--			filetype = {
+	--				gitcommit = true,
+	--				supercollider = true,
+	--				markdown = true,
+	--			},
+	--		})
+	--	end,
+	--},
+	--{
+	--	"zbirenbaum/copilot-cmp",
+	--	config = function ()
+	--		require("copilot_cmp").setup()
+	--	end
+	--},
+	--{
+	--	"CopilotC-Nvim/CopilotChat.nvim",
+	--	dependencies = {
+	--		{ "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+	--		{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+	--	},
+	--	opts = {
+	--		debug = true, -- Enable debugging
+	--	},
+	--},
 	{
 		"APZelos/blamer.nvim"
 	},

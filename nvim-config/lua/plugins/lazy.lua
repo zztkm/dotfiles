@@ -45,11 +45,6 @@ require("mason").setup()
 require("mason-lspconfig").setup {
 	ensure_installed = { "tailwindcss" },
 }
-require("mason-lspconfig").setup_handlers {
-	function(server_name)
-		require("lspconfig")[server_name].setup {}
-	end,
-}
 
 -- lspのハンドラーに設定
 capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -74,7 +69,7 @@ cmp.setup({
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
 	}),
 	sources = cmp.config.sources({
-		{ name = "copilot" },
+		--{ name = "copilot" },
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 	}, {
@@ -94,21 +89,21 @@ cmp.setup.filetype('gitcommit', {
 
 
 -- CopilotChat の設定
-local chat = require("CopilotChat")
-chat.setup({
-	window = {
-		layout = "float",
-		relative = 'editor', -- 'editor', 'win', 'cursor', 'mouse'
-		border = 'single', -- 'none', single', 'double', 'rounded', 'solid', 'shadow'
-		width = 0.8, -- fractional width of parent
-		height = 0.6, -- fractional height of parent
-		row = nil, -- row position of the window, default is centered
-		col = nil, -- column position of the window, default is centered
-		title = 'Copilot Chat', -- title of chat window
-		footer = nil, -- footer of chat window
-		zindex = 1, -- determines if window is on top or below other floating windows
-	},
-})
+-- local chat = require("CopilotChat")
+-- chat.setup({
+-- 	window = {
+-- 		layout = "float",
+-- 		relative = 'editor', -- 'editor', 'win', 'cursor', 'mouse'
+-- 		border = 'single', -- 'none', single', 'double', 'rounded', 'solid', 'shadow'
+-- 		width = 0.8, -- fractional width of parent
+-- 		height = 0.6, -- fractional height of parent
+-- 		row = nil, -- row position of the window, default is centered
+-- 		col = nil, -- column position of the window, default is centered
+-- 		title = 'Copilot Chat', -- title of chat window
+-- 		footer = nil, -- footer of chat window
+-- 		zindex = 1, -- determines if window is on top or below other floating windows
+-- 	},
+-- })
 
 
 -- scnvim (SuperCollider 用設定)
