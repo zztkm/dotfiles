@@ -71,7 +71,7 @@ syntax enable
 filetype plugin indent on
 
 " WSL yank support
-if has('wsl')
+if has('unix') && !has('macunix') && exists('$WSL_DISTRO_NAME')
     let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
     if executable(s:clip)
         augroup WSLYank
