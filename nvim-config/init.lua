@@ -1,67 +1,43 @@
 -- Neovim 設定のエントリポイント
 
+-- minpac のブートストラップ
+local function ensure_minpac()
+  local minpac_path = vim.fn.stdpath('data')..'/site/pack/minpac/opt/minpac'
+  if vim.fn.empty(vim.fn.glob(minpac_path)) > 0 then
+    vim.fn.system({'git', 'clone', 'https://github.com/k-takata/minpac.git', minpac_path})
+    vim.cmd [[packadd minpac]]
+  else
+    vim.cmd [[packadd minpac]]
+  end
+end
+
+-- minpac を確実にロード
+ensure_minpac()
+
+-- minpac の初期化とプラグイン設定
+vim.cmd [[
+  function! PackInit() abort
+    packadd minpac
+    
+    call minpac#init()
+    call minpac#add('k-takata/minpac', {'type': 'opt'})
+    
+    " プラグイン追加
+    call minpac#add('junegunn/fzf')
+    call minpac#add('junegunn/fzf.vim')
+  endfunction
+  
+  " 独自コマンドを定義
+  command! PackUpdate call PackInit() | call minpac#update()
+  command! PackClean  call PackInit() | call minpac#clean()
+  command! PackStatus packadd minpac | call minpac#status()
+]]
 
 -- module を利用するには lua ディレクトリに lua/hoge.lua のようにファイルを作成して
 -- require("hoge") のように読み込みます
 
 require("options")
-require("plugins/lazy")
+-- require("plugins/lazy")
 require("keymaps")
-require("autocmds")
+-- require("autocmds")
 
-local nvim_lsp = require ("lspconfig")
-local configs = require ("lspconfig.configs")
-vim.api.nvim_create_autocmd ({ "BufNewFile", "BufRead" }, {
-	pattern = { "*.dummygo" },
-	callback = function ()
-		-- filetype を "dummygo " に 設 定 す る
-		vim.bo.filetype = "dummygo"
-	end
-})
-
-if not configs.mylsp then
-	-- 今 回 作 成 し た mylsp を lspconfig に 登 録 す る 。
-	configs.mylsp={
-		default_config={
-			cmd={"mylsp"};
-			filetypes={"dummygo"};
-			-- root_dir=util.root_pattern(".git");
-			init_options={
-				command={"mylsp"};
-			};
-		};
-	}
-end
-
-nvim_lsp.mylsp.setup{
-	capabilities=capabilities,
-}
-
--- for typos
-nvim_lsp.typos_lsp.setup({
-	init_options = {
-		config = "~/.config/nvim/.typos.toml",
-	}
-})
-
--- for Swift
--- 参考: https://findy-code.io/engineer-lab/oshi-editor-the-uhooi
-nvim_lsp.sourcekit.setup{
-	cmd = {
-		"sourcekit-lsp",
-		"-Xswiftc",
-		"-sdk",
-		"-Xswiftc",
-		"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.2.sdk",
-		"-Xswiftc",
-		"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk",
-		"-Xswiftc",
-		"-target",
-		"-Xswiftc",
-		"aarch64-apple-ios18.2-simulator",
-	}
-}
-
--- for zls
--- zig と zls を PATH に追加しているので特に設定は不要
-nvim_lsp.zls.setup {}
