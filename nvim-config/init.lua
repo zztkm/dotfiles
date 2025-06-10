@@ -18,15 +18,24 @@ ensure_minpac()
 vim.cmd [[
   function! PackInit() abort
     packadd minpac
-    
+
     call minpac#init()
     call minpac#add('k-takata/minpac', {'type': 'opt'})
-    
+
     " プラグイン追加
     call minpac#add('junegunn/fzf')
     call minpac#add('junegunn/fzf.vim')
+    call minpac#add('neovim/nvim-lspconfig')
+    call minpac#add('williamboman/mason.nvim')
+    call minpac#add('williamboman/mason-lspconfig.nvim')
+    call minpac#add('bronson/vim-trailing-whitespace')
+    call minpac#add('hrsh7th/nvim-cmp')
+    call minpac#add('hrsh7th/cmp-nvim-lsp')
+    call minpac#add('hrsh7th/cmp-buffer')
+    call minpac#add('hrsh7th/cmp-emoji')
+	call minpac#add('L3MON4D3/LuaSnip')
   endfunction
-  
+
   " 独自コマンドを定義
   command! PackUpdate call PackInit() | call minpac#update()
   command! PackClean  call PackInit() | call minpac#clean()
@@ -37,7 +46,6 @@ vim.cmd [[
 -- require("hoge") のように読み込みます
 
 require("options")
--- require("plugins/lazy")
+require("plugins/config")
 require("keymaps")
--- require("autocmds")
 
