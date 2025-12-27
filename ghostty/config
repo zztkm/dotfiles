@@ -1,4 +1,4 @@
-theme = citruszest
+# theme = citruszest
 
 # キーバインド
 # https://ghostty.org/docs/config/keybind/reference#close_surface
@@ -14,3 +14,4 @@ font-size = 16
 cursor-style = block
 shell-integration-features = no-cursor
 
+keybind = shift+enter=text:\n
