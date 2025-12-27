@@ -13,3 +13,15 @@ ln -snf "${PWD}/.config/.wezterm.lua" "$HOME/.wezterm.lua"
 ln -snf "${PWD}/ideavim/.ideavimrc" "$HOME/.ideavimrc"
 ln -snf "${PWD}/.tmux.conf" "$HOME/.tmux.conf"
 
+# Create ~/.local/bin if it doesn't exist
+mkdir -p "$HOME/.local/bin"
+
+# Symlink executable scripts from bin/ directory
+for script in "${PWD}/bin"/*; do
+  if [ -f "$script" ]; then
+    script_name=$(basename "$script")
+    ln -sf "$script" "$HOME/.local/bin/$script_name"
+    chmod +x "$HOME/.local/bin/$script_name"
+  fi
+done
+

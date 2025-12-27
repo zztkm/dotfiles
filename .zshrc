@@ -1,6 +1,8 @@
 autoload -U compinit
 compinit
 
+export EDITOR="nvim"
+
 # ローカル設定 (OS 特有の設定や PATH 登録) があれば読み込む
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
@@ -67,7 +69,7 @@ function tmux-session() {
   # 2. 引数がない場合: ghq + fzf でリポジトリ選択
   else
     # ghq list -p でフルパスを取得し、fzfで選択
-    dir=$(ghq list -p | fzf --reverse --prompt="Repo > ")
+    dir=$(ghq list -p | FZF_DEFAULT_OPTS= fzf --reverse --prompt="Repo > ")
 
     # キャンセルされたら終了
     [[ -z "$dir" ]] && return 1
