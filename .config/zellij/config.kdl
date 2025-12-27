@@ -1,0 +1,13 @@
+keybinds {
+    // 通常モードなど（locked以外）で有効にする
+    shared_except "locked" {
+        // Ctrl + g で z-picker をフローティング起動
+        bind "Ctrl g" {
+            Run "z-picker" {
+                close_on_exit true
+                floating true
+            };
+        }
+    }
+}
+
