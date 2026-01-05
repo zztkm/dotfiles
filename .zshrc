@@ -37,8 +37,8 @@ bindkey '^]' fzf-src
 # alias
 alias nv="nvim"
 ## git
-alias pull="git pull origin $(git branch --show-current)"
-alias push="git push origin $(git branch --show-current)"
+# alias pull="git pull origin $(git branch --show-current)"
+# alias push="git push origin $(git branch --show-current)"
 alias gs="git status"
 ## gh
 alias ghb="gh browse"
@@ -49,6 +49,7 @@ alias confdiff="grep -v -e '^\s*#' -e '^\s*$'"
 
 ## 日常
 alias todo="nvim ~/todo.md"
+alias memo="nvim ~/memo.md"
 alias yolo="claude --dangerously-skip-permissions"
 
 # この設定がないと gpg 鍵で commit の署名ができない (なんで？
