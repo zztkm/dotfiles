@@ -12,6 +12,7 @@ ln -snf "${PWD}/.config/zellij" "$HOME/.config/zellij"
 ln -snf "${PWD}/.config/.wezterm.lua" "$HOME/.wezterm.lua"
 ln -snf "${PWD}/ideavim/.ideavimrc" "$HOME/.ideavimrc"
 ln -snf "${PWD}/.tmux.conf" "$HOME/.tmux.conf"
+ln -snf "${PWD}/.tigrc" "$HOME/.tigrc"
 
 # Create ~/.local/bin if it doesn't exist
 mkdir -p "$HOME/.local/bin"
