@@ -4,6 +4,14 @@
 # プレビューコマンド (bat)
 PREVIEW_CMD='bat --style=numbers --color=always --highlight-line {2} {1}'
 
+# 検索の大小文字モード
+# 既定: --smart-case
+CASE_FLAG="--smart-case"
+
+if [[ "$1" == "sensitive" || "$1" == "--case-sensitive" ]]; then
+  CASE_FLAG="--case-sensitive"
+fi
+
 # --- 1. 検索ルートの特定と移動 ---
 # 現在地がGitリポジトリ内ならルートへ、そうでなければそのまま
 if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
@@ -19,7 +27,7 @@ SELECTED_LINE=$(fzf --ansi --disabled \
     --layout reverse \
     --border \
     --bind "start:reload:echo 'Type to search...'" \
-    --bind "change:reload:rg --column --line-number --no-heading --color=always --smart-case {q} || true" \
+    --bind "change:reload:rg --column --line-number --no-heading --color=always ${CASE_FLAG} {q} || true" \
     --delimiter : \
     --preview "$PREVIEW_CMD" \
     --preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
