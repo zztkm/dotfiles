@@ -36,6 +36,7 @@ bindkey '^]' fzf-src
 
 # alias
 alias nv="nvim"
+
 ## git
 # alias pull="git pull origin $(git branch --show-current)"
 # alias push="git push origin $(git branch --show-current)"
@@ -51,6 +52,15 @@ alias confdiff="grep -v -e '^\s*#' -e '^\s*$'"
 alias todo="nvim ~/todo.md"
 alias memo="nvim ~/memo.md"
 alias yolo="claude --dangerously-skip-permissions"
+
+
+## Copilot CLI aliases with tool management
+alias copilot-haiku='copilot-with-tools.zsh haiku investigation'
+alias copilot-sonnet='copilot-with-tools.zsh sonnet investigation'
+alias copilot-haiku-dev='copilot-with-tools.zsh haiku development'
+
+## codex
+alias codex-fullauto="codex --full-auto"
 
 # この設定がないと gpg 鍵で commit の署名ができない (なんで？
 export GPG_TTY=$(tty)

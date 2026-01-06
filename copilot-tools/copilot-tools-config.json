@@ -1,0 +1,39 @@
+{
+  "settings": {
+    "investigation": {
+      "description": "Investigation mode - read-only operations",
+      "allowTools": [
+        "shell(grep:*)",
+        "shell(rg:*)",
+        "shell(git:*)",
+        "shell(./gradlew:*)",
+        "shell(cargo:*)",
+        "shell(pnpm:*)",
+        "shell(uv:*)",
+        "shell(xcodebuild:*)"
+      ],
+      "denyTools": [
+        "shell(git push)",
+        "shell(rm)"
+      ]
+    },
+    "development": {
+      "description": "Development mode - read/write operations",
+      "allowTools": [
+        "shell(grep:*)",
+        "shell(rg:*)",
+        "shell(git:*)",
+        "shell(./gradlew:*)",
+        "shell(cargo:*)",
+        "shell(pnpm:*)",
+        "shell(uv:*)",
+        "shell(xcodebuild:*)",
+        "write"
+      ],
+      "denyTools": [
+        "shell(git push)"
+      ]
+    }
+  },
+  "default": "investigation"
+}
