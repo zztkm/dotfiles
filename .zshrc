@@ -53,7 +53,6 @@ alias todo="nvim ~/todo.md"
 alias memo="nvim ~/memo.md"
 alias yolo="claude --dangerously-skip-permissions"
 
-
 ## Copilot CLI aliases with tool management
 alias copilot-haiku='copilot-with-tools.zsh haiku investigation'
 alias copilot-sonnet='copilot-with-tools.zsh sonnet investigation'
@@ -65,6 +64,10 @@ alias codex-fullauto="codex --full-auto"
 # この設定がないと gpg 鍵で commit の署名ができない (なんで？
 export GPG_TTY=$(tty)
 
+function tkill() {
+    # PATH が通ってる場所に配置されている前提
+    tmux-kill.zsh
+}
 # Tmux Session Manager for Zsh
 function tmux-session() {
   local session_name dir change
