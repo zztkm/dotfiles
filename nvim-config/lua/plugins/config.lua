@@ -65,6 +65,12 @@ cmp.setup.filetype('gitcommit', {
 	})
 })
 
+-- jsonls のセットアップ（スキーマは各ファイルの $schema に委ねる）
+local lspconfig = require("lspconfig")
+lspconfig.jsonls.setup({
+	capabilities = capabilities,
+})
+
 
 -- CopilotChat の設定
 -- local chat = require("CopilotChat")
