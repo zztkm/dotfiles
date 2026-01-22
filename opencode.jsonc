@@ -1,0 +1,13 @@
+{
+  // 見られたくない設定や local 固有は custom-pat を使う
+  // https://opencode.ai/docs/config/#custom-path
+  "$schema": "https://opencode.ai/config.json",
+  "theme": "tokyonight",
+  "permission": {
+      "skill": {
+          // これは Plan mode がないツール向けの Skill なので拒否しておく.
+          "create-plan": "deny"
+      }
+  }
+}
+
