@@ -7,7 +7,19 @@
       "skill": {
           // これは Plan mode がないツール向けの Skill なので拒否しておく.
           "create-plan": "deny"
+      },
+      "bash": {
+          "git push *": "deny",
+          "gh pr review *": "deny",
+          "gh pr comment *": "deny"
       }
+  },
+  "mcp": {
+    "cloudflare-docs": {
+        "enabled": true,
+        "type": "remote",
+        "url": "https://docs.mcp.cloudflare.com/mcp "
+    }
   }
 }
 
