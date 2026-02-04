@@ -10,10 +10,13 @@
         "shell(cargo:*)",
         "shell(pnpm:*)",
         "shell(uv:*)",
-        "shell(xcodebuild:*)"
+        "shell(xcodebuild:*)",
+        "shell(find:*)",
+        "shell(xargs:*)"
       ],
       "denyTools": [
         "shell(git push)",
+        "shell(git commit)",
         "shell(rm)"
       ]
     },
@@ -28,12 +31,17 @@
         "shell(pnpm:*)",
         "shell(uv:*)",
         "shell(xcodebuild:*)",
+        "shell(find:*)",
+        "shell(xargs:*)",
         "write"
       ],
       "denyTools": [
-        "shell(git push)"
+        "shell(git push)",
+        "shell(git commit)",
+        "shell(rm)"
       ]
     }
   },
   "default": "investigation"
 }
+
