@@ -19,7 +19,7 @@ PROMPT='$(zprompt)'
 # export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 # fzf の見た目とプレビュー設定
-export FZF_DEFAULT_OPTS='--height 40% --border --preview "bat --style=numbers --color=always --line-range :500 {}"'
+export FZF_DEFAULT_OPTS='--height 50% --border --preview "bat --style=numbers --color=always --line-range :500 {}"'
 
 
 # ghq のリポジトリ検索 + 移動

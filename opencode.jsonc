@@ -1,0 +1,25 @@
+{
+  // 見られたくない設定や local 固有は custom-pat を使う
+  // https://opencode.ai/docs/config/#custom-path
+  "$schema": "https://opencode.ai/config.json",
+  "theme": "tokyonight",
+  "permission": {
+      "skill": {
+          // これは Plan mode がないツール向けの Skill なので拒否しておく.
+          "create-plan": "deny"
+      },
+      "bash": {
+          "git push *": "deny",
+          "gh pr review *": "deny",
+          "gh pr comment *": "deny"
+      }
+  },
+  "mcp": {
+    "cloudflare-docs": {
+        "enabled": true,
+        "type": "remote",
+        "url": "https://docs.mcp.cloudflare.com/mcp "
+    }
+  }
+}
+

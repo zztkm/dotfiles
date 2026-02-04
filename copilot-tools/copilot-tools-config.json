@@ -4,6 +4,7 @@
       "description": "Investigation mode - read-only operations",
       "allowTools": [
         "shell(grep:*)",
+        "shell(tree:*)",
         "shell(rg:*)",
         "shell(git:*)",
         "shell(./gradlew:*)",
@@ -24,7 +25,9 @@
       "description": "Development mode - read/write operations",
       "allowTools": [
         "shell(grep:*)",
+        "shell(tree:*)",
         "shell(rg:*)",
+        "shell(mkdir:*)",
         "shell(git:*)",
         "shell(./gradlew:*)",
         "shell(cargo:*)",
