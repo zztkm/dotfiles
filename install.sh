@@ -12,6 +12,8 @@ ln -snf "${PWD}/copilot-tools" "$HOME/.config/copilot-tools"
 # opencode config
 mkdir -p "$HOME/.config/opencode"
 ln -snf "${PWD}/opencode.jsonc" "$HOME/.config/opencode/opencode.jsonc"
+# karabiner
+ln -snf "${PWD}/karabiner/windows_like_op.json" "$HOME/.config/karabiner/assets/complex_modifications/windows_like_op.json"
 # .wezterm.lua を $HOME にリンク
 ln -snf "${PWD}/.config/.wezterm.lua" "$HOME/.wezterm.lua"
 ln -snf "${PWD}/ideavim/.ideavimrc" "$HOME/.ideavimrc"

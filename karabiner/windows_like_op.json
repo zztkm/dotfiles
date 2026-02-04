@@ -1,0 +1,337 @@
+{
+  "title": "Windows-like: Browser LeftCtrl->Cmd (except arrows) + Slack Ctrl+Enter + Ctrl+C/V",
+  "rules": [
+    {
+      "description": "Slack: Ctrl+Enter -> Cmd+Enter (Send when Enter=New line)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "return_or_enter", "modifiers": { "mandatory": ["control"] } },
+          "to": [{ "key_code": "return_or_enter", "modifiers": ["command"] }],
+          "conditions": [
+            { "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.tinyspeck\\.slackmacgap$", "^com\\.tinyspeck\\.slackmacgap\\.beta$"] }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Slack: Ctrl+C / Ctrl+V -> Cmd+C / Cmd+V",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "c", "modifiers": { "mandatory": ["control"] } },
+          "to": [{ "key_code": "c", "modifiers": ["command"] }],
+          "conditions": [
+            { "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.tinyspeck\\.slackmacgap$", "^com\\.tinyspeck\\.slackmacgap\\.beta$"] }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "v", "modifiers": { "mandatory": ["control"] } },
+          "to": [{ "key_code": "v", "modifiers": ["command"] }],
+          "conditions": [
+            { "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.tinyspeck\\.slackmacgap$", "^com\\.tinyspeck\\.slackmacgap\\.beta$"] }
+          ]
+        }
+      ]
+    },
+
+    {
+      "description": "Browsers: Left Control acts like Command (set variable so we can exclude some combos)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "left_control", "modifiers": { "optional": ["any"] } },
+          "to": [
+            { "set_variable": { "name": "lc_cmd", "value": 1 } },
+            { "key_code": "right_command" }
+          ],
+          "to_after_key_up": [{ "set_variable": { "name": "lc_cmd", "value": 0 } }],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.apple\\.Safari$",
+                "^com\\.google\\.Chrome$",
+                "^org\\.mozilla\\.firefox$",
+                "^com\\.brave\\.Browser$",
+                "^com\\.microsoft\\.edgemac$",
+                "^company\\.thebrowser\\.Browser$"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "description": "Browsers: Ctrl+C / Ctrl+V -> Cmd+C / Cmd+V (so Right Ctrl also works)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "c", "modifiers": { "mandatory": ["control"] } },
+          "to": [{ "key_code": "c", "modifiers": ["command"] }],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.apple\\.Safari$",
+                "^com\\.google\\.Chrome$",
+                "^org\\.mozilla\\.firefox$",
+                "^com\\.brave\\.Browser$",
+                "^com\\.microsoft\\.edgemac$",
+                "^company\\.thebrowser\\.Browser$"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "v", "modifiers": { "mandatory": ["control"] } },
+          "to": [{ "key_code": "v", "modifiers": ["command"] }],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.apple\\.Safari$",
+                "^com\\.google\\.Chrome$",
+                "^org\\.mozilla\\.firefox$",
+                "^com\\.brave\\.Browser$",
+                "^com\\.microsoft\\.edgemac$",
+                "^company\\.thebrowser\\.Browser$"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "description": "Browsers: When LeftCtrl-made Cmd is held, keep Ctrl+Tab (avoid Cmd+Tab app switch)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "tab", "modifiers": { "mandatory": ["right_command"] } },
+          "to": [{ "key_code": "tab", "modifiers": ["control"] }],
+          "conditions": [
+            { "type": "variable_if", "name": "lc_cmd", "value": 1 },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.apple\\.Safari$",
+                "^com\\.google\\.Chrome$",
+                "^org\\.mozilla\\.firefox$",
+                "^com\\.brave\\.Browser$",
+                "^com\\.microsoft\\.edgemac$",
+                "^company\\.thebrowser\\.Browser$"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "tab", "modifiers": { "mandatory": ["right_command", "shift"] } },
+          "to": [{ "key_code": "tab", "modifiers": ["control", "shift"] }],
+          "conditions": [
+            { "type": "variable_if", "name": "lc_cmd", "value": 1 },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.apple\\.Safari$",
+                "^com\\.google\\.Chrome$",
+                "^org\\.mozilla\\.firefox$",
+                "^com\\.brave\\.Browser$",
+                "^com\\.microsoft\\.edgemac$",
+                "^company\\.thebrowser\\.Browser$"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "description": "Browsers: Exclude Ctrl+Arrow (Desktop move) when using LeftCtrl-made Cmd (preserve real Cmd+Arrow)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "left_arrow", "modifiers": { "mandatory": ["right_command"] } },
+          "to": [{ "key_code": "left_arrow", "modifiers": ["control"] }],
+          "conditions": [
+            { "type": "variable_if", "name": "lc_cmd", "value": 1 },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.apple\\.Safari$",
+                "^com\\.google\\.Chrome$",
+                "^org\\.mozilla\\.firefox$",
+                "^com\\.brave\\.Browser$",
+                "^com\\.microsoft\\.edgemac$",
+                "^company\\.thebrowser\\.Browser$"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "right_arrow", "modifiers": { "mandatory": ["right_command"] } },
+          "to": [{ "key_code": "right_arrow", "modifiers": ["control"] }],
+          "conditions": [
+            { "type": "variable_if", "name": "lc_cmd", "value": 1 },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.apple\\.Safari$",
+                "^com\\.google\\.Chrome$",
+                "^org\\.mozilla\\.firefox$",
+                "^com\\.brave\\.Browser$",
+                "^com\\.microsoft\\.edgemac$",
+                "^company\\.thebrowser\\.Browser$"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "up_arrow", "modifiers": { "mandatory": ["right_command"] } },
+          "to": [{ "key_code": "up_arrow", "modifiers": ["control"] }],
+          "conditions": [
+            { "type": "variable_if", "name": "lc_cmd", "value": 1 },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.apple\\.Safari$",
+                "^com\\.google\\.Chrome$",
+                "^org\\.mozilla\\.firefox$",
+                "^com\\.brave\\.Browser$",
+                "^com\\.microsoft\\.edgemac$",
+                "^company\\.thebrowser\\.Browser$"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "down_arrow", "modifiers": { "mandatory": ["right_command"] } },
+          "to": [{ "key_code": "down_arrow", "modifiers": ["control"] }],
+          "conditions": [
+            { "type": "variable_if", "name": "lc_cmd", "value": 1 },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.apple\\.Safari$",
+                "^com\\.google\\.Chrome$",
+                "^org\\.mozilla\\.firefox$",
+                "^com\\.brave\\.Browser$",
+                "^com\\.microsoft\\.edgemac$",
+                "^company\\.thebrowser\\.Browser$"
+              ]
+            }
+          ]
+        },
+
+        {
+          "type": "basic",
+          "from": { "key_code": "left_arrow", "modifiers": { "mandatory": ["right_command", "shift"] } },
+          "to": [{ "key_code": "left_arrow", "modifiers": ["control", "shift"] }],
+          "conditions": [
+            { "type": "variable_if", "name": "lc_cmd", "value": 1 },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.apple\\.Safari$",
+                "^com\\.google\\.Chrome$",
+                "^org\\.mozilla\\.firefox$",
+                "^com\\.brave\\.Browser$",
+                "^com\\.microsoft\\.edgemac$",
+                "^company\\.thebrowser\\.Browser$"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "right_arrow", "modifiers": { "mandatory": ["right_command", "shift"] } },
+          "to": [{ "key_code": "right_arrow", "modifiers": ["control", "shift"] }],
+          "conditions": [
+            { "type": "variable_if", "name": "lc_cmd", "value": 1 },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.apple\\.Safari$",
+                "^com\\.google\\.Chrome$",
+                "^org\\.mozilla\\.firefox$",
+                "^com\\.brave\\.Browser$",
+                "^com\\.microsoft\\.edgemac$",
+                "^company\\.thebrowser\\.Browser$"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "up_arrow", "modifiers": { "mandatory": ["right_command", "shift"] } },
+          "to": [{ "key_code": "up_arrow", "modifiers": ["control", "shift"] }],
+          "conditions": [
+            { "type": "variable_if", "name": "lc_cmd", "value": 1 },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.apple\\.Safari$",
+                "^com\\.google\\.Chrome$",
+                "^org\\.mozilla\\.firefox$",
+                "^com\\.brave\\.Browser$",
+                "^com\\.microsoft\\.edgemac$",
+                "^company\\.thebrowser\\.Browser$"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "down_arrow", "modifiers": { "mandatory": ["right_command", "shift"] } },
+          "to": [{ "key_code": "down_arrow", "modifiers": ["control", "shift"] }],
+          "conditions": [
+            { "type": "variable_if", "name": "lc_cmd", "value": 1 },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.apple\\.Safari$",
+                "^com\\.google\\.Chrome$",
+                "^org\\.mozilla\\.firefox$",
+                "^com\\.brave\\.Browser$",
+                "^com\\.microsoft\\.edgemac$",
+                "^company\\.thebrowser\\.Browser$"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "description": "Browsers (optional): Disable accidental Ctrl+Q (only for LeftCtrl-made Cmd)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "q", "modifiers": { "mandatory": ["right_command"] } },
+          "to": [{ "key_code": "vk_none" }],
+          "conditions": [
+            { "type": "variable_if", "name": "lc_cmd", "value": 1 },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.apple\\.Safari$",
+                "^com\\.google\\.Chrome$",
+                "^org\\.mozilla\\.firefox$",
+                "^com\\.brave\\.Browser$",
+                "^com\\.microsoft\\.edgemac$",
+                "^company\\.thebrowser\\.Browser$"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
