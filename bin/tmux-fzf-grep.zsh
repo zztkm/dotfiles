@@ -4,7 +4,8 @@
 # プレビューコマンド (bat)
 PREVIEW_CMD='bat --style=numbers --color=always --highlight-line {2} {1}'
 # プレビューウィンドウ設定 (fzf-smart-open と同じ右側レイアウト)
-PREVIEW_WINDOW='right:60%'
+# ヒット行の少し上から表示するため、初期スクロール位置を指定
+PREVIEW_WINDOW='right:60%:+{2}-5'
 
 # 検索の大小文字モード
 # 既定: --smart-case
@@ -30,7 +31,7 @@ SELECTED_LINE=$(fzf --ansi --disabled \
     --border \
     --height 100% \
     --bind "start:reload:echo 'Type to search...'" \
-    --bind "change:reload:rg --column --line-number --no-heading --color=always ${CASE_FLAG} {q} || true" \
+    --bind "change:reload:rg --column --line-number --no-heading --color=always --colors 'path:none' --colors 'line:none' --colors 'column:none' ${CASE_FLAG} {q} || true" \
     --delimiter : \
     --preview "$PREVIEW_CMD" \
     --preview-window "$PREVIEW_WINDOW" \
