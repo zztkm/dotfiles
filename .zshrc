@@ -60,6 +60,7 @@ alias copilot-haiku-dev='copilot-with-tools.zsh haiku development'
 
 ## codex
 alias codex-fullauto="codex --full-auto"
+alias codex-fullauto-network="codex --full-auto -c sandbox_workspace_write.network_access=true"
 
 # この設定がないと gpg 鍵で commit の署名ができない (なんで？
 export GPG_TTY=$(tty)
@@ -88,8 +89,8 @@ function tmux-session() {
     # キャンセルされたら終了
     [[ -z "$dir" ]] && return 1
 
-    # ディレクトリ名からセッション名を決定 (例: my-app)
-    session_name=$(basename "$dir")
+    # フルパスの "/" を "_" に変換してセッション名を決定
+    session_name=${dir//\//_}
 
     # "." を含むとtmuxが嫌がる場合があるので "_" に置換（お好みで）
     session_name=${session_name//./_}
