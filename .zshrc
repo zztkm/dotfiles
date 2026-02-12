@@ -61,6 +61,7 @@ alias copilot-haiku-dev='copilot-with-tools.zsh haiku development'
 ## codex
 alias codex-fullauto="codex --full-auto"
 alias codex-fullauto-network="codex --full-auto -c sandbox_workspace_write.network_access=true"
+alias codex-yolo="codex --dangerously-bypass-approvals-and-sandbox"
 
 # この設定がないと gpg 鍵で commit の署名ができない (なんで？
 export GPG_TTY=$(tty)

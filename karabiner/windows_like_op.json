@@ -1,5 +1,5 @@
 {
-  "title": "Windows-like: Browser LeftCtrl->Cmd (except arrows) + Slack Ctrl+Enter + Ctrl+C/V",
+  "title": "Windows-like: Browser LeftCtrl->Cmd (except arrows) + Slack Ctrl+Enter + Ctrl+C/V/A",
   "rules": [
     {
       "description": "Slack: Ctrl+Enter -> Cmd+Enter (Send when Enter=New line)",
@@ -15,14 +15,30 @@
       ]
     },
     {
-      "description": "Slack: Ctrl+C / Ctrl+V -> Cmd+C / Cmd+V",
+      "description": "Apps: Ctrl+C / Ctrl+V / Ctrl+A -> Cmd+C / Cmd+V / Cmd+A",
       "manipulators": [
         {
           "type": "basic",
           "from": { "key_code": "c", "modifiers": { "mandatory": ["control"] } },
           "to": [{ "key_code": "c", "modifiers": ["command"] }],
           "conditions": [
-            { "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.tinyspeck\\.slackmacgap$", "^com\\.tinyspeck\\.slackmacgap\\.beta$"] }
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.tinyspeck\\.slackmacgap$",
+                "^com\\.tinyspeck\\.slackmacgap\\.beta$",
+                "^com\\.hnc\\.Discord$",
+                "^com\\.hnc\\.DiscordCanary$",
+                "^com\\.hnc\\.DiscordPTB$",
+                "^com\\.openai\\.codex$",
+                "^com\\.apple\\.Safari$",
+                "^com\\.google\\.Chrome$",
+                "^org\\.mozilla\\.firefox$",
+                "^com\\.brave\\.Browser$",
+                "^com\\.microsoft\\.edgemac$",
+                "^company\\.thebrowser\\.Browser$"
+              ]
+            }
           ]
         },
         {
@@ -30,7 +46,47 @@
           "from": { "key_code": "v", "modifiers": { "mandatory": ["control"] } },
           "to": [{ "key_code": "v", "modifiers": ["command"] }],
           "conditions": [
-            { "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.tinyspeck\\.slackmacgap$", "^com\\.tinyspeck\\.slackmacgap\\.beta$"] }
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.tinyspeck\\.slackmacgap$",
+                "^com\\.tinyspeck\\.slackmacgap\\.beta$",
+                "^com\\.hnc\\.Discord$",
+                "^com\\.hnc\\.DiscordCanary$",
+                "^com\\.hnc\\.DiscordPTB$",
+                "^com\\.openai\\.codex$",
+                "^com\\.apple\\.Safari$",
+                "^com\\.google\\.Chrome$",
+                "^org\\.mozilla\\.firefox$",
+                "^com\\.brave\\.Browser$",
+                "^com\\.microsoft\\.edgemac$",
+                "^company\\.thebrowser\\.Browser$"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "a", "modifiers": { "mandatory": ["control"] } },
+          "to": [{ "key_code": "a", "modifiers": ["command"] }],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.tinyspeck\\.slackmacgap$",
+                "^com\\.tinyspeck\\.slackmacgap\\.beta$",
+                "^com\\.hnc\\.Discord$",
+                "^com\\.hnc\\.DiscordCanary$",
+                "^com\\.hnc\\.DiscordPTB$",
+                "^com\\.openai\\.codex$",
+                "^com\\.apple\\.Safari$",
+                "^com\\.google\\.Chrome$",
+                "^org\\.mozilla\\.firefox$",
+                "^com\\.brave\\.Browser$",
+                "^com\\.microsoft\\.edgemac$",
+                "^company\\.thebrowser\\.Browser$"
+              ]
+            }
           ]
         }
       ]
@@ -47,48 +103,6 @@
             { "key_code": "right_command" }
           ],
           "to_after_key_up": [{ "set_variable": { "name": "lc_cmd", "value": 0 } }],
-          "conditions": [
-            {
-              "type": "frontmost_application_if",
-              "bundle_identifiers": [
-                "^com\\.apple\\.Safari$",
-                "^com\\.google\\.Chrome$",
-                "^org\\.mozilla\\.firefox$",
-                "^com\\.brave\\.Browser$",
-                "^com\\.microsoft\\.edgemac$",
-                "^company\\.thebrowser\\.Browser$"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-
-    {
-      "description": "Browsers: Ctrl+C / Ctrl+V -> Cmd+C / Cmd+V (so Right Ctrl also works)",
-      "manipulators": [
-        {
-          "type": "basic",
-          "from": { "key_code": "c", "modifiers": { "mandatory": ["control"] } },
-          "to": [{ "key_code": "c", "modifiers": ["command"] }],
-          "conditions": [
-            {
-              "type": "frontmost_application_if",
-              "bundle_identifiers": [
-                "^com\\.apple\\.Safari$",
-                "^com\\.google\\.Chrome$",
-                "^org\\.mozilla\\.firefox$",
-                "^com\\.brave\\.Browser$",
-                "^com\\.microsoft\\.edgemac$",
-                "^company\\.thebrowser\\.Browser$"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": { "key_code": "v", "modifiers": { "mandatory": ["control"] } },
-          "to": [{ "key_code": "v", "modifiers": ["command"] }],
           "conditions": [
             {
               "type": "frontmost_application_if",
