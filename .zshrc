@@ -49,8 +49,8 @@ alias ghpr="gh pr create -w"
 alias confdiff="grep -v -e '^\s*#' -e '^\s*$'"
 
 ## 日常
-alias todo="nvim ~/todo.md"
-alias memo="nvim ~/memo.md"
+alias todo="zim ~/todo.md"
+alias memo="zim ~/memo.md"
 alias yolo="claude --dangerously-skip-permissions"
 
 ## Copilot CLI aliases with tool management
