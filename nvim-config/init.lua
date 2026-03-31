@@ -16,4 +16,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
+require("flutter-tools").setup {} -- use defaults
+
+-- LSP
+vim.lsp.enable("dartls")
 

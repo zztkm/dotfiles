@@ -75,24 +75,12 @@ return {
 
 	-- Flutter / Dart LSP（dartls は lspconfig で設定しないこと）
 	{
-		"nvim-flutter/flutter-tools.nvim",
+		"zztkm/flutter-tools.nvim",
 		lazy = false,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"hrsh7th/cmp-nvim-lsp",
 		},
-		config = function()
-			local capabilities = require("cmp_nvim_lsp").default_capabilities(
-				vim.lsp.protocol.make_client_capabilities()
-			)
-			-- jsonls のセットアップ（スキーマは各ファイルの $schema に委ねる）
-			vim.lsp.config("jsonls", { capabilities = capabilities })
-			vim.lsp.enable("jsonls")
-			-- flutter-tools
-			require("flutter-tools").setup({
-				lsp = { capabilities = capabilities },
-			})
-		end,
+		config = true,
 	},
 }
 
