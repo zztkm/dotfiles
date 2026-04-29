@@ -4,21 +4,21 @@ set -e
 
 PWD=`pwd`
 
-ln -sf "${PWD}/.zshrc" "$HOME/.zshrc"
+ln -sf "${PWD}/zsh/.zshrc" "$HOME/.zshrc"
 ln -snf "${PWD}/nvim-config" "$HOME/.config/nvim"
 ln -snf "${PWD}/ghostty" "$HOME/.config/ghostty"
-ln -snf "${PWD}/.config/zellij" "$HOME/.config/zellij"
+ln -snf "${PWD}/zellij" "$HOME/.config/zellij"
 ln -snf "${PWD}/copilot-tools" "$HOME/.config/copilot-tools"
 # opencode config
 mkdir -p "$HOME/.config/opencode"
-ln -snf "${PWD}/opencode.jsonc" "$HOME/.config/opencode/opencode.jsonc"
+ln -snf "${PWD}/opencode/opencode.jsonc" "$HOME/.config/opencode/opencode.jsonc"
 # karabiner
 ln -snf "${PWD}/karabiner/windows_like_op.json" "$HOME/.config/karabiner/assets/complex_modifications/windows_like_op.json"
-# .wezterm.lua を $HOME にリンク
-ln -snf "${PWD}/.config/.wezterm.lua" "$HOME/.wezterm.lua"
+# wezterm
+ln -snf "${PWD}/wezterm/.wezterm.lua" "$HOME/.wezterm.lua"
 ln -snf "${PWD}/ideavim/.ideavimrc" "$HOME/.ideavimrc"
-ln -snf "${PWD}/.tmux.conf" "$HOME/.tmux.conf"
-ln -snf "${PWD}/.tigrc" "$HOME/.tigrc"
+ln -snf "${PWD}/tmux/.tmux.conf" "$HOME/.tmux.conf"
+ln -snf "${PWD}/tig/.tigrc" "$HOME/.tigrc"
 
 # Create ~/.local/bin if it doesn't exist
 mkdir -p "$HOME/.local/bin"
