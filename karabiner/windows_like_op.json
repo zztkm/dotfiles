@@ -1,182 +1,8 @@
 {
-  "title": "Windows-like: Browser LeftCtrl->Cmd (except arrows) + Slack Ctrl+Enter + Ctrl+C/V/A",
+  "title": "Windows-like: LeftCtrl as Cmd in selected apps (Tab/Arrow/Q exceptions preserved)",
   "rules": [
     {
-      "description": "Slack: Ctrl+Enter -> Cmd+Enter (Send when Enter=New line)",
-      "manipulators": [
-        {
-          "type": "basic",
-          "from": { "key_code": "return_or_enter", "modifiers": { "mandatory": ["control"] } },
-          "to": [{ "key_code": "return_or_enter", "modifiers": ["command"] }],
-          "conditions": [
-            { "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.tinyspeck\\.slackmacgap$", "^com\\.tinyspeck\\.slackmacgap\\.beta$"] }
-          ]
-        }
-      ]
-    },
-    {
-      "description": "Apps: Ctrl+C / Ctrl+V / Ctrl+A -> Cmd+C / Cmd+V / Cmd+A",
-      "manipulators": [
-        {
-          "type": "basic",
-          "from": { "key_code": "c", "modifiers": { "mandatory": ["control"] } },
-          "to": [{ "key_code": "c", "modifiers": ["command"] }],
-          "conditions": [
-            {
-              "type": "frontmost_application_if",
-              "bundle_identifiers": [
-                "^com\\.tinyspeck\\.slackmacgap$",
-                "^com\\.tinyspeck\\.slackmacgap\\.beta$",
-                "^com\\.hnc\\.Discord$",
-                "^com\\.hnc\\.DiscordCanary$",
-                "^com\\.hnc\\.DiscordPTB$",
-                "^com\\.openai\\.codex$",
-                "^com\\.apple\\.Safari$",
-                "^com\\.google\\.Chrome$",
-                "^org\\.mozilla\\.firefox$",
-                "^com\\.brave\\.Browser$",
-                "^com\\.microsoft\\.edgemac$",
-                "^company\\.thebrowser\\.Browser$",
-                "^com\\.anthropic\\.claudefordesktop$"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": { "key_code": "v", "modifiers": { "mandatory": ["control"] } },
-          "to": [{ "key_code": "v", "modifiers": ["command"] }],
-          "conditions": [
-            {
-              "type": "frontmost_application_if",
-              "bundle_identifiers": [
-                "^com\\.tinyspeck\\.slackmacgap$",
-                "^com\\.tinyspeck\\.slackmacgap\\.beta$",
-                "^com\\.hnc\\.Discord$",
-                "^com\\.hnc\\.DiscordCanary$",
-                "^com\\.hnc\\.DiscordPTB$",
-                "^com\\.openai\\.codex$",
-                "^com\\.apple\\.Safari$",
-                "^com\\.google\\.Chrome$",
-                "^org\\.mozilla\\.firefox$",
-                "^com\\.brave\\.Browser$",
-                "^com\\.microsoft\\.edgemac$",
-                "^company\\.thebrowser\\.Browser$",
-                "^com\\.anthropic\\.claudefordesktop$"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": { "key_code": "a", "modifiers": { "mandatory": ["control"] } },
-          "to": [{ "key_code": "a", "modifiers": ["command"] }],
-          "conditions": [
-            {
-              "type": "frontmost_application_if",
-              "bundle_identifiers": [
-                "^com\\.tinyspeck\\.slackmacgap$",
-                "^com\\.tinyspeck\\.slackmacgap\\.beta$",
-                "^com\\.hnc\\.Discord$",
-                "^com\\.hnc\\.DiscordCanary$",
-                "^com\\.hnc\\.DiscordPTB$",
-                "^com\\.openai\\.codex$",
-                "^com\\.apple\\.Safari$",
-                "^com\\.google\\.Chrome$",
-                "^org\\.mozilla\\.firefox$",
-                "^com\\.brave\\.Browser$",
-                "^com\\.microsoft\\.edgemac$",
-                "^company\\.thebrowser\\.Browser$",
-                "^com\\.anthropic\\.claudefordesktop$"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "description": "Apps: Cmd+C / Cmd+V / Cmd+A -> Ctrl+C / Ctrl+V / Ctrl+A",
-      "manipulators": [
-        {
-          "type": "basic",
-          "from": { "key_code": "c", "modifiers": { "mandatory": ["command"] } },
-          "to": [{ "key_code": "c", "modifiers": ["control"] }],
-          "conditions": [
-            {
-              "type": "frontmost_application_if",
-              "bundle_identifiers": [
-                "^com\\.tinyspeck\\.slackmacgap$",
-                "^com\\.tinyspeck\\.slackmacgap\\.beta$",
-                "^com\\.hnc\\.Discord$",
-                "^com\\.hnc\\.DiscordCanary$",
-                "^com\\.hnc\\.DiscordPTB$",
-                "^com\\.openai\\.codex$",
-                "^com\\.apple\\.Safari$",
-                "^com\\.google\\.Chrome$",
-                "^org\\.mozilla\\.firefox$",
-                "^com\\.brave\\.Browser$",
-                "^com\\.microsoft\\.edgemac$",
-                "^company\\.thebrowser\\.Browser$",
-                "^com\\.anthropic\\.claudefordesktop$"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": { "key_code": "v", "modifiers": { "mandatory": ["command"] } },
-          "to": [{ "key_code": "v", "modifiers": ["control"] }],
-          "conditions": [
-            {
-              "type": "frontmost_application_if",
-              "bundle_identifiers": [
-                "^com\\.tinyspeck\\.slackmacgap$",
-                "^com\\.tinyspeck\\.slackmacgap\\.beta$",
-                "^com\\.hnc\\.Discord$",
-                "^com\\.hnc\\.DiscordCanary$",
-                "^com\\.hnc\\.DiscordPTB$",
-                "^com\\.openai\\.codex$",
-                "^com\\.apple\\.Safari$",
-                "^com\\.google\\.Chrome$",
-                "^org\\.mozilla\\.firefox$",
-                "^com\\.brave\\.Browser$",
-                "^com\\.microsoft\\.edgemac$",
-                "^company\\.thebrowser\\.Browser$",
-                "^com\\.anthropic\\.claudefordesktop$"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": { "key_code": "a", "modifiers": { "mandatory": ["command"] } },
-          "to": [{ "key_code": "a", "modifiers": ["control"] }],
-          "conditions": [
-            {
-              "type": "frontmost_application_if",
-              "bundle_identifiers": [
-                "^com\\.tinyspeck\\.slackmacgap$",
-                "^com\\.tinyspeck\\.slackmacgap\\.beta$",
-                "^com\\.hnc\\.Discord$",
-                "^com\\.hnc\\.DiscordCanary$",
-                "^com\\.hnc\\.DiscordPTB$",
-                "^com\\.openai\\.codex$",
-                "^com\\.apple\\.Safari$",
-                "^com\\.google\\.Chrome$",
-                "^org\\.mozilla\\.firefox$",
-                "^com\\.brave\\.Browser$",
-                "^com\\.microsoft\\.edgemac$",
-                "^company\\.thebrowser\\.Browser$",
-                "^com\\.anthropic\\.claudefordesktop$"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-
-    {
-      "description": "Browsers: Left Control acts like Command (set variable so we can exclude some combos)",
+      "description": "Apps: Left Control acts like Command (set variable so we can exclude some combos)",
       "manipulators": [
         {
           "type": "basic",
@@ -190,6 +16,13 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
+                "^com\\.tinyspeck\\.slackmacgap$",
+                "^com\\.tinyspeck\\.slackmacgap\\.beta$",
+                "^com\\.hnc\\.Discord$",
+                "^com\\.hnc\\.DiscordCanary$",
+                "^com\\.hnc\\.DiscordPTB$",
+                "^com\\.openai\\.codex$",
+                "^com\\.anthropic\\.claudefordesktop$",
                 "^com\\.apple\\.Safari$",
                 "^com\\.google\\.Chrome$",
                 "^org\\.mozilla\\.firefox$",
@@ -204,7 +37,7 @@
     },
 
     {
-      "description": "Browsers: When LeftCtrl-made Cmd is held, keep Ctrl+Tab (avoid Cmd+Tab app switch)",
+      "description": "Apps: When LeftCtrl-made Cmd is held, keep Ctrl+Tab (avoid Cmd+Tab app switch)",
       "manipulators": [
         {
           "type": "basic",
@@ -215,6 +48,13 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
+                "^com\\.tinyspeck\\.slackmacgap$",
+                "^com\\.tinyspeck\\.slackmacgap\\.beta$",
+                "^com\\.hnc\\.Discord$",
+                "^com\\.hnc\\.DiscordCanary$",
+                "^com\\.hnc\\.DiscordPTB$",
+                "^com\\.openai\\.codex$",
+                "^com\\.anthropic\\.claudefordesktop$",
                 "^com\\.apple\\.Safari$",
                 "^com\\.google\\.Chrome$",
                 "^org\\.mozilla\\.firefox$",
@@ -234,6 +74,13 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
+                "^com\\.tinyspeck\\.slackmacgap$",
+                "^com\\.tinyspeck\\.slackmacgap\\.beta$",
+                "^com\\.hnc\\.Discord$",
+                "^com\\.hnc\\.DiscordCanary$",
+                "^com\\.hnc\\.DiscordPTB$",
+                "^com\\.openai\\.codex$",
+                "^com\\.anthropic\\.claudefordesktop$",
                 "^com\\.apple\\.Safari$",
                 "^com\\.google\\.Chrome$",
                 "^org\\.mozilla\\.firefox$",
@@ -248,7 +95,7 @@
     },
 
     {
-      "description": "Browsers: Exclude Ctrl+Arrow (Desktop move) when using LeftCtrl-made Cmd (preserve real Cmd+Arrow)",
+      "description": "Apps: Exclude Ctrl+Arrow (Desktop move) when using LeftCtrl-made Cmd (preserve real Cmd+Arrow)",
       "manipulators": [
         {
           "type": "basic",
@@ -259,6 +106,13 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
+                "^com\\.tinyspeck\\.slackmacgap$",
+                "^com\\.tinyspeck\\.slackmacgap\\.beta$",
+                "^com\\.hnc\\.Discord$",
+                "^com\\.hnc\\.DiscordCanary$",
+                "^com\\.hnc\\.DiscordPTB$",
+                "^com\\.openai\\.codex$",
+                "^com\\.anthropic\\.claudefordesktop$",
                 "^com\\.apple\\.Safari$",
                 "^com\\.google\\.Chrome$",
                 "^org\\.mozilla\\.firefox$",
@@ -278,6 +132,13 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
+                "^com\\.tinyspeck\\.slackmacgap$",
+                "^com\\.tinyspeck\\.slackmacgap\\.beta$",
+                "^com\\.hnc\\.Discord$",
+                "^com\\.hnc\\.DiscordCanary$",
+                "^com\\.hnc\\.DiscordPTB$",
+                "^com\\.openai\\.codex$",
+                "^com\\.anthropic\\.claudefordesktop$",
                 "^com\\.apple\\.Safari$",
                 "^com\\.google\\.Chrome$",
                 "^org\\.mozilla\\.firefox$",
@@ -297,6 +158,13 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
+                "^com\\.tinyspeck\\.slackmacgap$",
+                "^com\\.tinyspeck\\.slackmacgap\\.beta$",
+                "^com\\.hnc\\.Discord$",
+                "^com\\.hnc\\.DiscordCanary$",
+                "^com\\.hnc\\.DiscordPTB$",
+                "^com\\.openai\\.codex$",
+                "^com\\.anthropic\\.claudefordesktop$",
                 "^com\\.apple\\.Safari$",
                 "^com\\.google\\.Chrome$",
                 "^org\\.mozilla\\.firefox$",
@@ -316,6 +184,13 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
+                "^com\\.tinyspeck\\.slackmacgap$",
+                "^com\\.tinyspeck\\.slackmacgap\\.beta$",
+                "^com\\.hnc\\.Discord$",
+                "^com\\.hnc\\.DiscordCanary$",
+                "^com\\.hnc\\.DiscordPTB$",
+                "^com\\.openai\\.codex$",
+                "^com\\.anthropic\\.claudefordesktop$",
                 "^com\\.apple\\.Safari$",
                 "^com\\.google\\.Chrome$",
                 "^org\\.mozilla\\.firefox$",
@@ -336,6 +211,13 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
+                "^com\\.tinyspeck\\.slackmacgap$",
+                "^com\\.tinyspeck\\.slackmacgap\\.beta$",
+                "^com\\.hnc\\.Discord$",
+                "^com\\.hnc\\.DiscordCanary$",
+                "^com\\.hnc\\.DiscordPTB$",
+                "^com\\.openai\\.codex$",
+                "^com\\.anthropic\\.claudefordesktop$",
                 "^com\\.apple\\.Safari$",
                 "^com\\.google\\.Chrome$",
                 "^org\\.mozilla\\.firefox$",
@@ -355,6 +237,13 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
+                "^com\\.tinyspeck\\.slackmacgap$",
+                "^com\\.tinyspeck\\.slackmacgap\\.beta$",
+                "^com\\.hnc\\.Discord$",
+                "^com\\.hnc\\.DiscordCanary$",
+                "^com\\.hnc\\.DiscordPTB$",
+                "^com\\.openai\\.codex$",
+                "^com\\.anthropic\\.claudefordesktop$",
                 "^com\\.apple\\.Safari$",
                 "^com\\.google\\.Chrome$",
                 "^org\\.mozilla\\.firefox$",
@@ -374,6 +263,13 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
+                "^com\\.tinyspeck\\.slackmacgap$",
+                "^com\\.tinyspeck\\.slackmacgap\\.beta$",
+                "^com\\.hnc\\.Discord$",
+                "^com\\.hnc\\.DiscordCanary$",
+                "^com\\.hnc\\.DiscordPTB$",
+                "^com\\.openai\\.codex$",
+                "^com\\.anthropic\\.claudefordesktop$",
                 "^com\\.apple\\.Safari$",
                 "^com\\.google\\.Chrome$",
                 "^org\\.mozilla\\.firefox$",
@@ -393,6 +289,13 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
+                "^com\\.tinyspeck\\.slackmacgap$",
+                "^com\\.tinyspeck\\.slackmacgap\\.beta$",
+                "^com\\.hnc\\.Discord$",
+                "^com\\.hnc\\.DiscordCanary$",
+                "^com\\.hnc\\.DiscordPTB$",
+                "^com\\.openai\\.codex$",
+                "^com\\.anthropic\\.claudefordesktop$",
                 "^com\\.apple\\.Safari$",
                 "^com\\.google\\.Chrome$",
                 "^org\\.mozilla\\.firefox$",
@@ -407,7 +310,7 @@
     },
 
     {
-      "description": "Browsers (optional): Disable accidental Ctrl+Q (only for LeftCtrl-made Cmd)",
+      "description": "Apps (optional): Disable accidental Ctrl+Q (only for LeftCtrl-made Cmd)",
       "manipulators": [
         {
           "type": "basic",
@@ -418,6 +321,13 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
+                "^com\\.tinyspeck\\.slackmacgap$",
+                "^com\\.tinyspeck\\.slackmacgap\\.beta$",
+                "^com\\.hnc\\.Discord$",
+                "^com\\.hnc\\.DiscordCanary$",
+                "^com\\.hnc\\.DiscordPTB$",
+                "^com\\.openai\\.codex$",
+                "^com\\.anthropic\\.claudefordesktop$",
                 "^com\\.apple\\.Safari$",
                 "^com\\.google\\.Chrome$",
                 "^org\\.mozilla\\.firefox$",
