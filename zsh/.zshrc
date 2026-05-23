@@ -15,6 +15,10 @@ export ZPROMPT_GIT_COLOR="green"
 setopt promptsubst
 PROMPT='$(zprompt)'
 
+# Takumi guard
+export PIP_INDEX_URL=https://pypi.flatt.tech/simple/
+export UV_INDEX_URL=https://pypi.flatt.tech/simple/
+
 # fzf (ripgrep と bat が必要)
 # export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
@@ -251,18 +255,18 @@ cargo-check-fzf() {
 
 
 # 自作の TODO 管理ツールのラッパー
-ztodo-edit() {
+todo-edit() {
     local id
     id=$(ztodo llm "$@" | fzf --header "Enter: 編集" | awk -F'\t' '{print $1}')
     [ -n "$id" ] && print -z "ztodo edit $id"
 }
-ztodo-done() {
+todo-done() {
     ztodo llm | fzf -m --header "Tab: 選択  Enter: 完了" | awk '{print $1}' | xargs -I{} ztodo done {}
 }
-ztodo-reopne() {
+todo-reopne() {
     ztodo llm --done | fzf -m --header "Tab: 選択  Enter: re-open" | awk '{print $1}' | xargs -I{} ztodo reopen {}
 }
-ztodo-clean() {
+todo-clean() {
     ztodo llm --done | fzf -m --header "Tab: 選択  Enter: 削除" | awk '{print $1}' | xargs -I{} ztodo rm {}
 }
 

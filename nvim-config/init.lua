@@ -20,4 +20,7 @@ require("flutter-tools").setup {} -- use defaults
 
 -- LSP
 vim.lsp.enable("dartls")
+-- kotlin-lsp CLI が必要
+-- `brew install JetBrains/utils/kotlin-lsp`
+vim.lsp.enable("kotlin_lsp")
 
