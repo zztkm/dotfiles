@@ -175,10 +175,6 @@ function zle-zmux-session() {
 zle -N zle-zmux-session
 bindkey '^z' zle-zmux-session
 
-
-# Vite+ bin (https://viteplus.dev)
-. "$HOME/.vite-plus/env"
-
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/zztkm/.lmstudio/bin"
 # End of LM Studio CLI section
