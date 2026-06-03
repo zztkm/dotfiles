@@ -99,10 +99,20 @@ cmd_add() {
 }
 
 cmd_remove() {
-    local branch="$1"
+    local force=false
+
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            --force|-f) force=true; shift ;;
+            --) shift; break ;;
+            *)  break ;;
+        esac
+    done
+
+    local branch="${1:-}"
     if [[ -z "$branch" ]]; then
         echo "gwt remove: missing branch name" >&2
-        echo "usage: gwt remove <branch>" >&2
+        echo "usage: gwt remove [--force|-f] <branch>" >&2
         exit 1
     fi
 
@@ -117,7 +127,11 @@ cmd_remove() {
         exit 1
     fi
 
-    git worktree remove "$worktree_path"
+    if [[ "$force" == true ]]; then
+        git worktree remove --force "$worktree_path"
+    else
+        git worktree remove "$worktree_path"
+    fi
     echo "gwt: worktree removed: $worktree_path"
 }
 
@@ -128,7 +142,7 @@ gwt — git worktree wrapper
 USAGE:
     gwt add <branch>                 Create worktree for existing branch
     gwt add -b <branch> [<start-point>]  Create new branch from <start-point>
-    gwt remove <branch>              Remove worktree for branch
+    gwt remove [--force|-f] <branch> Remove worktree for branch
     gwt                              Show this help
 
 Worktree directory naming:
